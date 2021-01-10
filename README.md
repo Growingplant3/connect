@@ -10,9 +10,9 @@
 
 #### バージョン情報
 <hr>
-* Ruby 2.6.5<br>
-* Rails 5.2.4<br>
-* Postgresql 13.1<br>
+Ruby 2.6.5<br>
+Rails 5.2.4<br>
+Postgresql 13.1<br>
 
 #### 機能一覧
 <hr>
