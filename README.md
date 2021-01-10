@@ -28,19 +28,20 @@ Postgresql 13.1<br>
 7. 処方内容編集機能<br>
 8. 処方内容削除機能<br>
   記録・編集・削除は医療機関のみ実行可能<br>
-9. かかりつけ医療機関登録機能<br>
+9. 医療機関いいね機能<br>
 
 #### カタログ設計
 <hr>
-保留：スプレッドシートへのリンク<br>
+https://docs.google.com/spreadsheets/d/1gsgnXWy--47LMxwDWEqJtHLqluEmE2CKlJxH5F59UeA/edit?usp=sharing<br>
 
 #### テーブル設計
 <hr>
-保留：スプレッドシートへのリンク<br>
+ER図：https://drive.google.com/file/d/1uqXjACQV76IF2b9Xvb0-5NKoeaZvXI4m/view?usp=sharing<br>
+テーブル:https://docs.google.com/spreadsheets/d/19-v_z6cjIUZsJXcJYlrItew4ti7sqePg3G6ZdAY89j0/edit#gid=0<br>
 
 #### 画面遷移図
 <hr>
-保留：スプレッドシートへのリンク<br>
+https://drive.google.com/file/d/19SgCUnvvmOYiV5g9kLXdYVX8FSyhyxXo/view?usp=sharing<br>
 
 #### 画面ワイヤーフレーム
 <hr>
