@@ -36,7 +36,7 @@ https://docs.google.com/spreadsheets/d/1gsgnXWy--47LMxwDWEqJtHLqluEmE2CKlJxH5F59
 
 #### テーブル設計
 <hr>
-ER図：https://drive.google.com/file/d/1uqXjACQV76IF2b9Xvb0-5NKoeaZvXI4m/view?usp=sharing<br>
+ER図：https://drive.google.com/file/d/117ddQkndAci7izHyWbW19O5rSOJCh2Ix/view?usp=sharing<br>
 テーブル:https://docs.google.com/spreadsheets/d/19-v_z6cjIUZsJXcJYlrItew4ti7sqePg3G6ZdAY89j0/edit#gid=0<br>
 
 #### 画面遷移図
