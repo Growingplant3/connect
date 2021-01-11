@@ -41,7 +41,7 @@ ER図：https://drive.google.com/file/d/117ddQkndAci7izHyWbW19O5rSOJCh2Ix/view?u
 
 #### 画面遷移図
 <hr>
-https://drive.google.com/file/d/19SgCUnvvmOYiV5g9kLXdYVX8FSyhyxXo/view?usp=sharing<br>
+https://drive.google.com/file/d/1dxIbCYCbHIdAfCYYXa3-Hr6f3b-O1yQY/view?usp=sharing<br>
 
 #### 画面ワイヤーフレーム
 <hr>
