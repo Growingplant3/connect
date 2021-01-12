@@ -45,7 +45,15 @@ https://drive.google.com/file/d/1dxIbCYCbHIdAfCYYXa3-Hr6f3b-O1yQY/view?usp=shari
 
 #### 画面ワイヤーフレーム
 <hr>
-保留：cacooへのリンク<br>
+https://drive.google.com/file/d/1qrAHAbCB0nHsnULcG0MUY2ZVS64HoMbI/view?usp=sharing<br>
+https://drive.google.com/file/d/1lgwQttV4eIOxefjQHmsN5HKpT64G9aSk/view?usp=sharing<br>
+https://drive.google.com/file/d/1cZfDf0T8jltVk1895zXYRO9MGjTK_3ZR/view?usp=sharing<br>
+https://drive.google.com/file/d/1wyqjp4JQAzVkzKwdzNbWUTZr66QpdFWG/view?usp=sharing<br>
 
 #### 使用予定Gem
 devise<br>
+
+#### 実装予定機能
+deviseでのサインアップ/ログイン機能<br>
+UserのPharmacyいいね機能(フォロー)<br>
+Google map APIを用いた登録済み薬局住所から地図出力機能<br>
