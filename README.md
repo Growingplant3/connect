@@ -55,5 +55,5 @@ devise<br>
 
 #### 実装予定機能
 deviseでのサインアップ/ログイン機能<br>
-UserのPharmacyいいね機能(フォロー)<br>
+UserのPharmacyフォロー機能(いいね)<br>
 Google map APIを用いた登録済み薬局住所から地図出力機能<br>
