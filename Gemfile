@@ -17,6 +17,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 # secret
 gem 'dotenv-rails'
+# Authentication
+gem 'devise'
 
 group :development, :test do
   # Debug
