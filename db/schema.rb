@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_035838) do
     t.text "sick"
     t.text "operation"
     t.text "note"
-    t.integer "role"
+    t.integer "role", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

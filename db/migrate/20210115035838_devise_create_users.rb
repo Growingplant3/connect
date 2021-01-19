@@ -14,7 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.text :sick
       t.text :operation
       t.text :note
-      t.integer :role
+      t.integer :role, default: 0
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
