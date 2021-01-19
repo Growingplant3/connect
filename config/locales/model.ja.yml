@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      name: ユーザー名
+      email: メールアドレス
+      postcode: 郵便番号
+      address: 住所
+      telephone_number: 電話番号
+      birthday: 誕生日
+      sex: 性別
+      side_effect: 副作用歴
+      allergy: アレルギー歴
+      sick: 病歴
+      operation: 手術歴
+      role: 役割
+      note: 備考
+  enums:
+    user:
+      sex:
+        unknown: --
+        male: 男性
+        female: 女性
+      role:
+        normal: 一般
+        developer: 開発者
+        master: 管理者
