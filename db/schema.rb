@@ -16,6 +16,18 @@ ActiveRecord::Schema.define(version: 2021_01_15_035838) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "postcode"
+    t.string "address"
+    t.string "telephone_number"
+    t.datetime "birthday"
+    t.integer "sex", default: 0
+    t.text "side_effect"
+    t.text "allergy"
+    t.text "sick"
+    t.text "operation"
+    t.text "note"
+    t.integer "role"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -23,8 +35,12 @@ ActiveRecord::Schema.define(version: 2021_01_15_035838) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["birthday"], name: "index_users_on_birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["sex"], name: "index_users_on_sex"
+    t.index ["telephone_number"], name: "index_users_on_telephone_number"
   end
 
 end
