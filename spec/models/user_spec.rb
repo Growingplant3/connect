@@ -106,6 +106,22 @@ RSpec.describe 'ユーザーモデル機能', type: :model do
         expect{ user.sex = "another" }.to raise_error ArgumentError
       end
     end
+
+    context '役割' do
+      it '開発者で登録できる' do
+        user.role = "developer"
+        expect(user).to be_valid
+      end
+
+      it '管理者で登録できる' do
+        user.role = "master"
+        expect(user).to be_valid
+      end
+
+      it '未入力・男性・女性以外で登録できない' do
+        expect{ user.sex = "another" }.to raise_error ArgumentError
+      end
+    end
   end
 
 end
