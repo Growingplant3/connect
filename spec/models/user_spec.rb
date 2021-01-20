@@ -64,6 +64,34 @@ RSpec.describe 'ユーザーモデル機能', type: :model do
       end
     end
     
+    context '電話番号' do
+      it '9文字の値を入力すると登録できない' do
+        user.telephone_number = "012345678"
+        expect(user).not_to be_valid
+      end
+
+      it '10文字の値を入力すると登録できる' do
+        user.telephone_number = "0123456789"
+        expect(user).to be_valid
+      end
+
+      it '11文字の値を入力すると登録できる' do
+        user.telephone_number = "01234567890"
+        expect(user).to be_valid
+      end
+
+      it '12文字の値を入力すると登録できない' do
+        user.telephone_number = "012345678901"
+        expect(user).not_to be_valid
+      end
+
+      it '数字以外の値を入力すると登録できない' do
+        user.telephone_number = "0a2#4%6(8"
+        expect(user).not_to be_valid
+      end
+    end
+
+
   end
 
 end
