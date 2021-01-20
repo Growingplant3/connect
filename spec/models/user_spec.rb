@@ -91,6 +91,18 @@ RSpec.describe 'ユーザーモデル機能', type: :model do
       end
     end
 
+    context '性別' do
+      it '男性で登録できる' do
+        user.sex = "male"
+        expect(user).to be_valid
+      end
+
+      it '女性で登録できる' do
+        user.sex = "female"
+        expect(user).to be_valid
+      end
+    end
+
 
   end
 
