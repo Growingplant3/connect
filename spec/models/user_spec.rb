@@ -47,6 +47,23 @@ RSpec.describe 'ユーザーモデル機能', type: :model do
       end
     end
 
+    context '郵便番号カラム' do
+      it '6文字の値を入力すると登録できない' do
+        user.postcode = "123456"
+        expect(user).not_to be_valid
+      end
+
+      it '8文字の値を入力すると登録できない' do
+        user.postcode = "12345678"
+        expect(user).not_to be_valid
+      end
+
+      it '数字以外の値を入力すると登録できない' do
+        user.postcode = "1a3-5¥7"
+        expect(user).not_to be_valid
+      end
+    end
+    
   end
 
 end
