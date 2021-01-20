@@ -31,5 +31,12 @@ RSpec.describe 'ユーザーモデル機能', type: :model do
         expect(new_user).not_to be_valid
       end
     end
+
+    context 'パスワードのある新規登録' do
+      it 'パスワードが7文字だとアカウント登録できない' do
+        new_user.password = "abcdefg"
+        expect(new_user).not_to be_valid
+      end
+    end
   end
 end
