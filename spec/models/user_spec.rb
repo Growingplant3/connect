@@ -39,4 +39,14 @@ RSpec.describe 'ユーザーモデル機能', type: :model do
       end
     end
   end
+
+  describe 'モデルの編集' do
+    context '全てのカラム' do
+      it '全てのカラムに適切な値を入力すると登録できる' do
+        expect(user).to be_valid
+      end
+    end
+
+  end
+
 end
