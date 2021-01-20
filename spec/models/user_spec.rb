@@ -47,7 +47,7 @@ RSpec.describe 'ユーザーモデル機能', type: :model do
       end
     end
 
-    context '郵便番号カラム' do
+    context '郵便番号' do
       it '6文字の値を入力すると登録できない' do
         user.postcode = "123456"
         expect(user).not_to be_valid
