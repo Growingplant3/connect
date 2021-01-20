@@ -101,9 +101,11 @@ RSpec.describe 'ユーザーモデル機能', type: :model do
         user.sex = "female"
         expect(user).to be_valid
       end
+
+      it '未入力・男性・女性以外で登録できない' do
+        expect{ user.sex = "another" }.to raise_error ArgumentError
+      end
     end
-
-
   end
 
 end
