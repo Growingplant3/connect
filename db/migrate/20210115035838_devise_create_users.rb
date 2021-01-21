@@ -3,11 +3,11 @@
 class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
-      t.string :name, null:false
+      t.string :name, null: false
       t.string :postcode
       t.string :address
       t.string :telephone_number
-      t.datetime :birthday
+      t.date :birthday
       t.integer :sex, default: 0
       t.text :side_effect
       t.text :allergy

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_035838) do
     t.string "postcode"
     t.string "address"
     t.string "telephone_number"
-    t.datetime "birthday"
+    t.date "birthday"
     t.integer "sex", default: 0
     t.text "side_effect"
     t.text "allergy"
