@@ -11,7 +11,7 @@ FactoryBot.define do
 		postcode { "1050011" }
 		address { "東京都港区芝公園4丁目2-8" }
 		telephone_number { "0311112222" }
-		birthday { "2000/01/01".to_datetime }
+		birthday { "2000-01-01".to_date }
 		sex { "unknown" }
 		side_effect { "マイスリーで眠気" }
 		allergy { "小麦" }
