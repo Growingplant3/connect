@@ -4,23 +4,23 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %></br>
+    <%= f.label :name %><br>
     <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "本名で入力してください" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %></br>
+    <%= f.label :email %><br>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例：example@gmail.com" %>
   </div>
 
   <div class="field">
     <%= f.label :password %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em></br>
+    <em>(<%= @minimum_password_length %> characters minimum)</em><br>
     <%= f.password_field :password, autocomplete: "new-password", placeholder: "8〜128文字で入力してください" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %></br>
+    <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "もう一度パスワードを入力してください" %>
   </div>
 
