@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :telephone_number, format: { with: /\A[0-9]+\z/ }, length: { in: 10..11 }, allow_nil: true
   validates :sex, inclusion: { in: %w(unknown male female) }
   validates :role, inclusion: { in: %w(normal developer master) }
-  validate :should_be_past
+  validate :should_be_past, on: :update
   enum sex: { unknown: 0, male: 1, female: 2 }
   enum role: { normal: 0, developer: 1, master: 2 }
 
