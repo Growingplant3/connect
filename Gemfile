@@ -19,6 +19,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dotenv-rails'
 # Authentication
 gem 'devise'
+gem 'devise-i18n'
 # enum
 gem 'enum_help'
 
