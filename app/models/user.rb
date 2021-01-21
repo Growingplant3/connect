@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  before_validation :before_save, on: :create
+  before_validation :before_save, on: :update
   validates :name, presence: true
   validates :postcode, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }, allow_nil: true
   validates :telephone_number, format: { with: /\A[0-9]+\z/ }, length: { in: 10..11 }, allow_nil: true
