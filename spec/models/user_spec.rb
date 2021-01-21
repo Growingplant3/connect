@@ -91,6 +91,13 @@ RSpec.describe 'ユーザーモデル機能', type: :model do
       end
     end
 
+    context '誕生日' do
+      it '未来の日付を入力すると登録できる' do
+        user.birthday = Date.current + 1.day
+        expect(user).not_to be_valid
+      end
+    end
+
     context '性別' do
       it '男性で登録できる' do
         user.sex = "male"
