@@ -4,5 +4,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  resources :users, only: [:show]
+  resources :users, only: %i[show edit]
 end
