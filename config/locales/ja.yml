@@ -1,4 +1,7 @@
 ja:
+  button:
+    sign_out: ログアウト
+    user_show: ユーザー情報確認
   activerecord:
     errors:
       messages:

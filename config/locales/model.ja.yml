@@ -1,4 +1,6 @@
 ja:
+  app:
+    title: webお薬手帳
   activerecord:
     models:
       user: ユーザー
