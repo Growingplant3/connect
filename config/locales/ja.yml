@@ -2,6 +2,9 @@ ja:
   button:
     sign_out: ログアウト
     user_show: ユーザー情報確認
+  flash:
+    alert:
+      continue_edit: 続けてユーザー情報を設定してください。
   activerecord:
     errors:
       messages:
