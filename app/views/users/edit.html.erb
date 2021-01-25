@@ -1,4 +1,4 @@
-<h1><%= @user.name %>さんのeditです</h1>
+<h1><%= t('activerecord.title.user.edit') %></h1>
 
 <%= form_with(model: @user, local: true, url: user_path) do |f| %>
   <%= render "devise/shared/error_messages", resource: @user %>
@@ -53,5 +53,6 @@
     <%= f.text_area :note %>
   </div>
 
-  <%= f.submit t('devise.registrations.edit.update') %>
+  <%= f.submit t('devise.registrations.edit.update') %><br>
+  <%= link_to t('button.user_show'), @user %>
 <% end %>
