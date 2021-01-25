@@ -92,7 +92,7 @@ RSpec.describe 'ユーザーモデル機能', type: :model do
     end
 
     context '誕生日' do
-      it '未来の日付を入力すると登録できる' do
+      it '未来の日付を入力すると登録できない' do
         user.birthday = Date.current + 1.day
         expect(user).not_to be_valid
       end
