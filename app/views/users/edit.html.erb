@@ -1,1 +1,57 @@
-<h1>editです</h1>
+<h1><%= @user.name %>さんのeditです</h1>
+
+<%= form_with(model: @user, local: true, url: user_path) do |f| %>
+  <%= render "devise/shared/error_messages", resource: @user %>
+
+  <div class="field">
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone_number %>
+    <%= f.telephone_field :telephone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthday %>
+    <%= f.date_field :birthday %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sex %>
+    <%= f.text_field :sex %>
+  </div>
+
+  <div class="field">
+    <%= f.label :side_effect %>
+    <%= f.text_area :side_effect %>
+  </div>
+
+  <div class="field">
+    <%= f.label :allergy %>
+    <%= f.text_area :allergy %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sick %>
+    <%= f.text_area :sick %>
+  </div>
+
+  <div class="field">
+    <%= f.label :operation %>
+    <%= f.text_area :operation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :note %>
+    <%= f.text_area :note %>
+  </div>
+
+  <%= f.submit t('devise.registrations.edit.update') %>
+<% end %>
