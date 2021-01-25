@@ -4,6 +4,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      welcome: さん、こんにちは
     attributes:
       user:
         name: ユーザー名
@@ -18,6 +19,20 @@ ja:
         operation: 手術歴
         role: 役割
         note: 備考
+    title:
+      user:
+        show: ユーザー情報を確認中
+        edit: ユーザー情報を編集中
+  button:
+    sign_out: ログアウト
+    user_show: ユーザー情報確認
+    user_edit: ユーザー情報編集
+    user_destroy: アカウントを削除する
+  flash:
+    alert:
+      user:
+        failure:
+          update: アカウントの編集ができませんでした。
   enums:
     user:
       sex:
