@@ -1,1 +1,15 @@
-<h1>あああ</h1>
+<h1><%= @user.name %>さんのshowです</h1>
+
+<p>
+  <%= t('activerecord.attributes.user.postcode') %>:<%= @user.postcode %><br>
+  <%= t('activerecord.attributes.user.address') %>:<%= @user.address %><br>
+  <%= t('activerecord.attributes.user.telephone_number') %>:<%= @user.telephone_number %><br>
+  <%= t('activerecord.attributes.user.birthday') %>:<%= l(@user.birthday, format: :long) %><br>
+  <%= t('activerecord.attributes.user.sex') %>:<%= @user.sex_i18n %><br>
+  <%= t('activerecord.attributes.user.allergy') %>:<%= @user.allergy %><br>
+  <%= t('activerecord.attributes.user.sick') %>:<%= @user.sick %><br>
+  <%= t('activerecord.attributes.user.operation') %>:<%= @user.operation %><br>
+  <%= t('activerecord.attributes.user.note') %>:<%= @user.note %><br>
+</p>
+
+<%= link_to "編集へ戻る", edit_user_path(@user) %>
