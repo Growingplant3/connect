@@ -9,10 +9,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "編集成功"
+      flash[:notice] = I18n.t('devise.registrations.updated')
       redirect_to @user
     else
-      flash.now[:alert] = "編集失敗"
+      flash.now[:alert] = I18n.t('flash.alert.user.failure.update')
       render :edit
     end
   end
