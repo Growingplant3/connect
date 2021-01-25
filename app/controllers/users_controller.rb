@@ -16,6 +16,12 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    @user.destroy
+    flash[:notice] = I18n.t('devise.registrations.destroyed')
+    redirect_to root_path
+  end
 
   private
 
