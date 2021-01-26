@@ -10,8 +10,19 @@ RSpec.describe 'ユーザー管理機能', type: :system do
       fill_in 'user[password]', with: 'new_user'
       fill_in 'user[password_confirmation]', with: 'new_user'
       click_button 'アカウント登録'
-      expect(page).to have_content 'アカウント登録が完了しました。' && '続けてユーザー情報を設定してください。'
-      expect(page).to have_content 'ユーザー情報を編集中'
+      expect(page).to have_content 'アカウント登録が完了しました。' && '続けてユーザー情報を設定してください。' && 'ユーザー情報を編集中'
+    end
+  end
+
+  describe 'ログイン機能' do
+    it '必要項目を満たせばログインできる' do
+      visit new_user_session_path
+      new_user
+      fill_in 'user[name]', with: new_user.name
+      fill_in 'user[email]', with: new_user.email
+      fill_in 'user[password]', with: 'new_user'
+      click_button 'ログイン'
+      expect(page).to have_content 'ログインしました。' && 'ユーザー情報を確認中'
     end
   end
 end
