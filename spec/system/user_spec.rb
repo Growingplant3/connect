@@ -25,4 +25,15 @@ RSpec.describe 'ユーザー管理機能', type: :system do
       expect(page).to have_content 'ログインしました。' && 'ユーザー情報を確認中'
     end
   end
+
+  describe 'ログイン後' do
+    before { login(new_user) }
+      it 'アカウント削除ボタンからアカウントが削除できる' do
+        page.accept_confirm do
+          click_on 'アカウントを削除する'
+        end
+        expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
+      # end
+    end
+  end
 end
