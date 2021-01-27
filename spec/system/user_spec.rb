@@ -23,6 +23,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
       fill_in 'user[password]', with: 'new_user'
       click_button 'ログイン'
       expect(page).to have_content 'ログインしました。' && 'ユーザー情報を確認中'
+      expect(current_path).to eq user_path(new_user.id)
     end
   end
 
@@ -33,6 +34,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
           click_on 'アカウントを削除する'
         end
         expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
+        expect(current_path).to eq root_path
       end
 
       it 'ユーザー情報編集ボタンからアカウントが編集できる' do
@@ -49,6 +51,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         fill_in 'user[note]', with: '特になし'
         click_on '更新'
         expect(page).to have_content 'アカウント情報を変更しました。' && 'ユーザー情報を確認中'
+        expect(current_path).to eq user_path(new_user.id)
       end
 
       it 'パスワード更新ボタンからパスワードが再設定できる' do
