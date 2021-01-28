@@ -52,14 +52,6 @@ RSpec.describe 'ユーザー管理機能', type: :system do
           expect(page).to have_content 'エラーが発生したため ユーザー は保存されませんでした。' && 'パスワードを入力してください' && 'パスワード（確認用）とパスワードの入力が一致しません'
         end
 
-        it 'パスワードが空だとサインアップできない' do
-          fill_in 'user[name]', with: '新規登録ユーザー'
-          fill_in 'user[email]', with: 'new_user@gmail.com'
-          fill_in 'user[password_confirmation]', with: 'new_user'
-          click_button 'アカウント登録'
-          expect(page).to have_content 'エラーが発生したため ユーザー は保存されませんでした。' && 'パスワードを入力してください' && 'パスワード（確認用）とパスワードの入力が一致しません'
-        end
-
         it 'パスワードと確認用パスワードが一致していなければサインアップできない' do
           fill_in 'user[name]', with: '新規登録ユーザー'
           fill_in 'user[email]', with: 'new_user@gmail.com'
@@ -67,6 +59,16 @@ RSpec.describe 'ユーザー管理機能', type: :system do
           fill_in 'user[password_confirmation]', with: 'password'
           click_button 'アカウント登録'
           expect(page).to have_content 'エラーが発生したため ユーザー は保存されませんでした。' && 'パスワード（確認用）とパスワードの入力が一致しません'
+        end
+
+        it 'すでに存在しているユーザーのメールアドレスと同じメールアドレスだとサインアップできない' do
+          new_user
+          fill_in 'user[name]', with: '遅れてきたユーザー'
+          fill_in 'user[email]', with: 'new_user@gmail.com'
+          fill_in 'user[password]', with: 'password'
+          fill_in 'user[password_confirmation]', with: 'password'
+          click_button 'アカウント登録'
+          expect(page).to have_content 'エラーが発生したため ユーザー は保存されませんでした。' && 'Eメールはすでに存在します'
         end
       end
     end
@@ -166,15 +168,22 @@ RSpec.describe 'ユーザー管理機能', type: :system do
           expect(page).to have_content 'アカウント情報を変更しました。' && 'ユーザー情報を確認中'
           expect(current_path).to eq user_path(new_user)
         end
+
+        it '郵便番号に全角数字を入力すると半角数字に変換されて保存される' do
+          fill_in 'user[postcode]', with: '１２３４５６７'
+          click_on '更新'
+          expect(page).to have_content '1234567'
+        end
+
+        it '電話番号に全角数字を入力すると半角数字に変換されて保存される' do
+          fill_in 'user[telephone_number]', with: '０３１２３４５６７８'
+          click_on '更新'
+          expect(page).to have_content '0312345678'
+        end
       end
 
       context '失敗' do
-        # it '以下の四項目が未入力だとアカウント情報が更新できない'
-        #   click_on '更新'
-        #   expect(page).to have_content '郵便番号は不正な値です' && '郵便番号は7文字で入力してください' && '電話番号は不正な値です' && '電話番号は10文字以上で入力してください'
-        # end
-
-        it '郵便番号に数値以外を入力すると更新できない' do
+        it '郵便番号に数字以外を入力すると更新できない' do
           fill_in 'user[postcode]', with: 'abcdefg'
           click_on '更新'
           expect(page).to have_content 'アカウントの編集ができませんでした。' && '郵便番号は不正な値です'
