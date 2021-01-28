@@ -188,15 +188,17 @@ RSpec.describe 'ユーザー管理機能', type: :system do
       end
     end
 
-    describe 'aaa' do
-      it 'パスワード更新ボタンからパスワードが再設定できる' do
-        visit edit_user_registration_path
-        fill_in 'user[password]', with: 'new_password'
-        fill_in 'user[password_confirmation]', with: 'new_password'
-        fill_in 'user[current_password]', with: 'new_user'
-        click_on '更新'
-        expect(page).to have_content 'アカウント情報を変更しました。'
-        expect(current_path).to eq root_path
+    describe 'パスワードの変更' do
+      context '成功' do
+        it 'パスワード更新ボタンからパスワードが再設定できる' do
+          visit edit_user_registration_path
+          fill_in 'user[password]', with: 'new_password'
+          fill_in 'user[password_confirmation]', with: 'new_password'
+          fill_in 'user[current_password]', with: 'new_user'
+          click_on '更新'
+          expect(page).to have_content 'アカウント情報を変更しました。'
+          expect(current_path).to eq root_path
+        end
       end
     end
   end
