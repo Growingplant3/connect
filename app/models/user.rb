@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   before_validation :before_save, on: :update
   validates :name, presence: true
-  validates :postcode, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }, allow_nil: true
-  validates :telephone_number, format: { with: /\A[0-9]+\z/ }, length: { in: 10..11 }, allow_nil: true
+  validates :postcode, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }, allow_blank: true
+  validates :telephone_number, format: { with: /\A[0-9]+\z/ }, length: { in: 10..11 }, allow_blank: true
   validates :sex, inclusion: { in: %w(unknown male female) }
   validates :role, inclusion: { in: %w(normal developer master) }
   validate :should_be_past, on: :update
