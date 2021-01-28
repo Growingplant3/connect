@@ -17,6 +17,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 # secret
 gem 'dotenv-rails'
+# Authentication
+gem 'devise'
+gem 'devise-i18n'
+# enum
+gem 'enum_help'
 
 group :development, :test do
   # Debug
@@ -25,6 +30,14 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'launchy'
+  gem 'capybara'
+  gem 'webdrivers'
 end
 
 group :development do

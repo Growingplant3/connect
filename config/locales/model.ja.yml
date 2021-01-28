@@ -1,0 +1,45 @@
+ja:
+  app:
+    title: webお薬手帳
+  activerecord:
+    models:
+      user: ユーザー
+      welcome: さん、こんにちは
+    attributes:
+      user:
+        name: ユーザー名
+        postcode: 郵便番号
+        address: 住所
+        telephone_number: 電話番号
+        birthday: 誕生日
+        sex: 性別
+        side_effect: 副作用歴
+        allergy: アレルギー歴
+        sick: 病歴
+        operation: 手術歴
+        role: 役割
+        note: 備考
+    title:
+      user:
+        show: ユーザー情報を確認中
+        edit: ユーザー情報を編集中
+  button:
+    sign_out: ログアウト
+    user_show: ユーザー情報確認
+    user_edit: ユーザー情報編集
+    user_destroy: アカウントを削除する
+  flash:
+    alert:
+      user:
+        failure:
+          update: アカウントの編集ができませんでした。
+  enums:
+    user:
+      sex:
+        unknown: --
+        male: 男性
+        female: 女性
+      role:
+        normal: 一般
+        developer: 開発者
+        master: 管理者

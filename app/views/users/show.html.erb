@@ -1,0 +1,18 @@
+<h1><%= t('activerecord.title.user.show') %></h1>
+
+<p>
+  <%= t('activerecord.attributes.user.postcode') %>:<%= @user.postcode %><br>
+  <%= t('activerecord.attributes.user.address') %>:<%= @user.address %><br>
+  <%= t('activerecord.attributes.user.telephone_number') %>:<%= @user.telephone_number %><br>
+  <% if @user.birthday.present? %>
+    <%= t('activerecord.attributes.user.birthday') %>:<%= l(@user.birthday, format: :long) %><br>
+  <% end %>
+  <%= t('activerecord.attributes.user.sex') %>:<%= @user.sex_i18n %><br>
+  <%= t('activerecord.attributes.user.allergy') %>:<%= @user.allergy %><br>
+  <%= t('activerecord.attributes.user.sick') %>:<%= @user.sick %><br>
+  <%= t('activerecord.attributes.user.operation') %>:<%= @user.operation %><br>
+  <%= t('activerecord.attributes.user.note') %>:<%= @user.note %><br>
+</p>
+
+<%= link_to I18n.t('button.user_edit'), edit_user_path(@user) %><br>
+<%= link_to I18n.t('button.user_destroy'), @user, method: :delete, data: { confirm: I18n.t('devise.registrations.edit.are_you_sure') } %>
