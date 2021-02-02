@@ -1,9 +1,8 @@
 ja:
-  app:
-    title: webお薬手帳
   activerecord:
     models:
       user: ユーザー
+      pharmacy: 薬局
       welcome: さん、こんにちは
     attributes:
       user:
@@ -19,20 +18,27 @@ ja:
         operation: 手術歴
         role: 役割
         note: 備考
+      pharmacy:
+        name: 薬局名
+        postcode: 郵便番号
+        address: 住所
+        normal_telephone_number: 通常電話番号
+        emergency_telephone_number: 緊急時電話番号
+        note: 備考
     title:
       user:
         show: ユーザー情報を確認中
         edit: ユーザー情報を編集中
+      pharmacy:
+        show: 薬局情報を確認中
+        edit: 薬局情報を編集中
   button:
     sign_out: ログアウト
     user_show: ユーザー情報確認
     user_edit: ユーザー情報編集
-    user_destroy: アカウントを削除する
-  flash:
-    alert:
-      user:
-        failure:
-          update: アカウントの編集ができませんでした。
+    pharmacy_show: 薬局情報確認
+    pharmacy_edit: 薬局情報編集
+    destroy: アカウントを削除する
   enums:
     user:
       sex:
