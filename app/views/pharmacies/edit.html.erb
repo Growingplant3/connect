@@ -23,6 +23,29 @@
     <%= f.telephone_field :emergency_telephone_number %>
   </div>
 
+  <div>
+    <%= f.fields_for :activities do |form| %>
+      <div class="field">
+        <%= form.label :day_of_the_week, form.object.day_of_the_week_i18n %>
+      </div>
+
+      <div class="field">
+        <%= form.label :business %>
+        <%= form.select :business, Activity.businesses_i18n.invert %>
+      </div>
+
+      <div class="field">
+        <%= form.label :opening_time %>
+        <%= form.time_field :opening_time %>
+      </div>
+
+      <div class="field">
+        <%= form.label :closing_time %>
+        <%= form.time_field :closing_time %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="field">
     <%= f.label :note %>
     <%= f.text_area :note %>

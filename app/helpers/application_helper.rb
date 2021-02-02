@@ -46,4 +46,11 @@ module ApplicationHelper
       end
     end
   end
+
+  def from_start_to_finish(activity)
+    return if activity.business == "false" || activity.opening_time.blank? || activity.closing_time.blank?
+    open = activity.opening_time.strftime("%R")
+    close = activity.closing_time.strftime("%R")
+    "#{open}〜#{close}"
+  end
 end

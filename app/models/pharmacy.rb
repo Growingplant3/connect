@@ -8,6 +8,8 @@ class Pharmacy < ApplicationRecord
   validates :postcode, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }, allow_blank: true
   validates :normal_telephone_number, format: { with: /\A[0-9]+\z/ }, length: { in: 10..11 }, allow_blank: true
   validates :emergency_telephone_number, format: { with: /\A[0-9]+\z/ }, length: { in: 10..11 }, allow_blank: true
+  has_many :activities, dependent: :destroy
+  accepts_nested_attributes_for :activities, allow_destroy: true
 
   def before_save
     self.postcode = DowncaseCallback.replace_to_half_num(self.postcode) if self.postcode.present?

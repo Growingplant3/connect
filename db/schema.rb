@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_014202) do
+ActiveRecord::Schema.define(version: 2021_02_02_024529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.bigint "pharmacy_id"
+    t.integer "day_of_the_week"
+    t.boolean "business", default: false
+    t.datetime "opening_time"
+    t.datetime "closing_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pharmacy_id"], name: "index_activities_on_pharmacy_id"
+  end
 
   create_table "pharmacies", force: :cascade do |t|
     t.string "name", null: false
@@ -64,4 +75,5 @@ ActiveRecord::Schema.define(version: 2021_01_29_014202) do
     t.index ["telephone_number"], name: "index_users_on_telephone_number"
   end
 
+  add_foreign_key "activities", "pharmacies"
 end

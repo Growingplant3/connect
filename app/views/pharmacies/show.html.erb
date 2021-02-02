@@ -7,6 +7,12 @@
   <%= t('activerecord.attributes.pharmacy.address') %>:<%= @pharmacy.address %><br>
   <%= t('activerecord.attributes.pharmacy.normal_telephone_number') %>:<%= @pharmacy.normal_telephone_number %><br>
   <%= t('activerecord.attributes.pharmacy.emergency_telephone_number') %>:<%= @pharmacy.emergency_telephone_number %><br>
+  <%= t('activerecord.models.activity') %>:<br>
+  <% @pharmacy.activities.each do |activity| %>
+    <%= activity.day_of_the_week_i18n %>
+    <%= activity.business_i18n %>
+    <%= from_start_to_finish(activity) %><br>
+  <% end %>
   <%= t('activerecord.attributes.pharmacy.note') %>:<%= @pharmacy.note %><br>
 </p>
 

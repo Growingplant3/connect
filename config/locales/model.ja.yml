@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       pharmacy: 薬局
       welcome: さん、こんにちは
+      activity: 開局状況
     attributes:
       user:
         name: ユーザー名
@@ -25,6 +26,11 @@ ja:
         normal_telephone_number: 通常電話番号
         emergency_telephone_number: 緊急時電話番号
         note: 備考
+      activity:
+        day_of_the_week: 曜日
+        business: 営業中
+        opening_time: 開局時間
+        closing_time: 閉局時間
     title:
       user:
         show: ユーザー情報を確認中
@@ -49,3 +55,15 @@ ja:
         normal: 一般
         developer: 開発者
         master: 管理者
+    activity:
+      business:
+        true: 開局
+        false: お休み
+      day_of_the_week:
+        monday: 月曜日
+        tuesday: 火曜日
+        wednesday: 水曜日
+        thursday: 木曜日
+        friday: 金曜日
+        saturday: 土曜日
+        sunday: 日曜日

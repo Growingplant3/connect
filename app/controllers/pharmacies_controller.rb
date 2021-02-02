@@ -5,6 +5,11 @@ class PharmaciesController < ApplicationController
   end
 
   def edit
+    if @pharmacy.activities.blank?
+      7.times do |week_number|
+        @pharmacy.activities.build(day_of_the_week: week_number).save
+      end
+    end
   end
 
   def update
@@ -26,7 +31,9 @@ class PharmaciesController < ApplicationController
   private
 
   def pharmacies_params
-    params.require(:pharmacy).permit(:postcode, :address, :normal_telephone_number, :emergency_telephone_number, :note)
+    params.require(:pharmacy).permit(:postcode, :address, :normal_telephone_number, :emergency_telephone_number, :note,
+      activities_attributes: [:id, :business, :opening_time, :closing_time]
+    )
   end
 
   def set_pharmacy
