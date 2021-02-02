@@ -5,4 +5,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   resources :users, only: %i[show edit update destroy]
+  devise_for :pharmacies, controllers: {
+    registrations: 'pharmacies/registrations',
+    sessions: 'pharmacies/sessions'
+  }
+  resources :pharmacies, only: %i[show edit update destroy]
 end

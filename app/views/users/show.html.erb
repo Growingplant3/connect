@@ -15,4 +15,4 @@
 </p>
 
 <%= link_to I18n.t('button.user_edit'), edit_user_path(@user) %><br>
-<%= link_to I18n.t('button.user_destroy'), @user, method: :delete, data: { confirm: I18n.t('devise.registrations.edit.are_you_sure') } %>
+<%= link_to I18n.t('button.destroy'), @user, method: :delete, data: { confirm: I18n.t('devise.registrations.edit.are_you_sure') } %>

@@ -1,0 +1,14 @@
+<h1><%= t('activerecord.title.pharmacy.show') %></h1>
+
+<p>
+  <%= t('activerecord.attributes.pharmacy.name') %>:<%= @pharmacy.name %><br>
+  <%= t('activerecord.attributes.pharmacy.email') %>:<%= @pharmacy.email %><br>
+  <%= t('activerecord.attributes.pharmacy.postcode') %>:<%= @pharmacy.postcode %><br>
+  <%= t('activerecord.attributes.pharmacy.address') %>:<%= @pharmacy.address %><br>
+  <%= t('activerecord.attributes.pharmacy.normal_telephone_number') %>:<%= @pharmacy.normal_telephone_number %><br>
+  <%= t('activerecord.attributes.pharmacy.emergency_telephone_number') %>:<%= @pharmacy.emergency_telephone_number %><br>
+  <%= t('activerecord.attributes.pharmacy.note') %>:<%= @pharmacy.note %><br>
+</p>
+
+<%= link_to I18n.t('button.pharmacy_edit'), edit_pharmacy_path(@pharmacy) %><br>
+<%= link_to I18n.t('button.destroy'), @pharmacy, method: :delete, data: { confirm: I18n.t('devise.registrations.edit.are_you_sure') } %>

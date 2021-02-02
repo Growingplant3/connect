@@ -136,7 +136,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
   end
 
   describe 'ログイン後' do
-    before { login(new_user) }
+    before { user_login(new_user) }
     describe 'アカウントの削除' do
       context '成功' do
         it 'アカウント削除ボタンからアカウントが削除できる' do
