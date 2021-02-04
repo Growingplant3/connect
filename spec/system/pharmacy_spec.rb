@@ -1,6 +1,10 @@
 require 'rails_helper'
 RSpec.describe '薬局管理機能', type: :system do
   let(:new_pharmacy) { create(:new_pharmacy) }
+  let(:sunflower_pharmacy) { create(:sunflower_pharmacy) }
+  let(:rape_blossoms_pharmacy) { create(:rape_blossoms_pharmacy) }
+  let(:free_time_pharmacy) { create(:free_time_pharmacy) }
+  let(:flower_pharmacy) { create(:flower_pharmacy) }
 
   describe 'サインアップ機能' do
     before { visit new_pharmacy_registration_path }
@@ -215,6 +219,61 @@ RSpec.describe '薬局管理機能', type: :system do
           expect(page).to have_content 'アカウント情報を変更しました。'
           expect(current_path).to eq root_path
         end
+      end
+    end
+  end
+
+  describe '薬局検索機能' do
+    before {
+      sunflower_pharmacy
+      rape_blossoms_pharmacy
+      free_time_pharmacy
+      flower_pharmacy
+      visit pharmacies_path
+    }
+    after { expect(Pharmacy.count).to eq 4 }
+    context '全てのアプリ利用者は薬局検索機能を使用することができる' do
+      it '通常電話番号での完全一致検索ができる' do
+        find('#q_normal_telephone_number_or_emergency_telephone_number_eq').set('04712345678')
+        click_on '検索'
+        expect(page).to have_content 'ひまわり薬局'
+        expect(page).not_to have_content 'なのはな薬局' && 'ひまな薬局' && 'はな薬局'
+      end
+
+      it '緊急事電話番号での完全一致検索ができる' do
+        find('#q_normal_telephone_number_or_emergency_telephone_number_eq').set('09012345678')
+        click_on '検索'
+        expect(page).to have_content 'ひまわり薬局'
+        expect(page).not_to have_content 'なのはな薬局' && 'ひまな薬局' && 'はな薬局'
+      end
+
+      it '薬局名でのあいまい検索ができる' do
+        find('#q_name_cont').set('ひま')
+        click_on '検索'
+        expect(page).to have_content 'ひまわり薬局' && 'ひまな薬局'
+        expect(page).not_to have_content 'なのはな薬局' && 'はな薬局'
+      end
+
+      it '住所でのあいまい検索ができる' do
+        find('#q_address_cont').set('松戸市')
+        click_on '検索'
+        expect(page).to have_content 'ひまな薬局'
+        expect(page).not_to have_content 'ひまわり薬局' && 'なのはな薬局' && 'はな薬局'
+      end
+
+      it 'メールアドレスでのあいまい検索ができる' do
+        find('#q_email_cont').set('hana')
+        click_on '検索'
+        expect(page).to have_content 'なのはな薬局' && 'はな薬局'
+        expect(page).not_to have_content 'ひまわり薬局' && 'ひまな薬局'
+      end
+
+      it 'あいまい検索を組み合わせて絞り込みができる' do
+        find('#q_name_cont').set('ひま')
+        find('#q_address_cont').set('市川市')
+        click_on '検索'
+        expect(page).to have_content 'ひまわり薬局'
+        expect(page).not_to have_content 'なのはな薬局' && 'ひまな薬局' && 'はな薬局'
       end
     end
   end
