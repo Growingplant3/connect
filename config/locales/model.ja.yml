@@ -38,6 +38,8 @@ ja:
       pharmacy:
         show: 薬局情報を確認中
         edit: 薬局情報を編集中
+        search: 薬局検索
+        index: 薬局一覧
   button:
     sign_out: ログアウト
     user_show: ユーザー情報確認

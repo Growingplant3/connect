@@ -1,0 +1,25 @@
+<h2><%= t('activerecord.title.pharmacy.search') %></h2>
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :normal_telephone_number_or_emergency_telephone_number_eq %><br>
+  <%= f.search_field :normal_telephone_number_or_emergency_telephone_number_eq %><br>
+
+  <%= f.label :name_cont %><br>
+  <%= f.search_field :name_cont %><br>
+
+  <%= f.label :address_cont %><br>
+  <%= f.search_field :address_cont %><br>
+
+  <%= f.label :email_cont %><br>
+  <%= f.search_field :email_cont %><br>
+
+  <%= f.submit %>
+<% end %>
+
+<h2><%= t('activerecord.title.pharmacy.index') %></h2>
+<% @pharmacies.each do |pharmacy| %>
+  <%= link_to "#{pharmacy.name}", pharmacy %>
+  <%= pharmacy.address %>
+  <%= pharmacy.normal_telephone_number %>
+  <br>
+<% end %>

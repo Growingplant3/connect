@@ -22,6 +22,8 @@ gem 'devise'
 gem 'devise-i18n'
 # enum
 gem 'enum_help'
+# search
+gem 'ransack'
 
 group :development, :test do
   # Debug
