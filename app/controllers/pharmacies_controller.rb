@@ -1,5 +1,10 @@
 class PharmaciesController < ApplicationController
-  before_action :set_pharmacy
+  before_action :set_pharmacy, except: [:index]
+
+  def index
+    @q = Pharmacy.ransack(params[:q])
+    @pharmacies = @q.result(distinct: true)
+  end
 
   def show
   end

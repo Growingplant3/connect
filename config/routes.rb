@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     registrations: 'pharmacies/registrations',
     sessions: 'pharmacies/sessions'
   }
-  resources :pharmacies, only: %i[show edit update destroy]
+  resources :pharmacies, only: %i[index show edit update destroy]
 end
