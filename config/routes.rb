@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  resources :users, only: %i[show edit update destroy]
+  resources :users, only: %i[index show edit update destroy]
   devise_for :pharmacies, controllers: {
     registrations: 'pharmacies/registrations',
     sessions: 'pharmacies/sessions'

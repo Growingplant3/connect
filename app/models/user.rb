@@ -23,4 +23,41 @@ class User < ApplicationRecord
       errors.add(:birthday, I18n.t('errors.messages.should_be_past'))
     end
   end
+
+  def self.selection(params_q)
+    return if params_q.blank?
+    if params_q[:birthday_cont].present? && self.regular_expression_confirmation(params_q[:birthday_cont])
+      digits = params_q[:birthday_cont].length
+      search_range = self.judgment_of_characters_and_conversion(params_q[:birthday_cont],digits)
+      if search_range == nil
+        self.where(role: 0)
+      else
+        self.where(role: 0).where(birthday: search_range)
+      end
+    else
+      self.where(role: 0)
+    end
+  end
+
+  def self.regular_expression_confirmation(string)
+    string =~ /\A[0-9]+\z/
+  end
+
+  def self.judgment_of_characters_and_conversion(string,length)
+    case length
+    when 6
+      if string =~ /[0-9]{4}(0[1-9]|1[0-2])/
+        from = (string + "01").to_date
+        to = from.end_of_month
+        return from..to
+      end
+    when 4
+      if string =~ /[0-9]{4}/
+        from = (string + "0101").to_date
+        to = from.end_of_year
+        return from..to
+      end
+    end
+    nil
+  end
 end
