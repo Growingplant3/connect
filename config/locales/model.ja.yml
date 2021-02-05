@@ -35,6 +35,8 @@ ja:
       user:
         show: ユーザー情報を確認中
         edit: ユーザー情報を編集中
+        search: ユーザー検索
+        index: ユーザー一覧
       pharmacy:
         show: 薬局情報を確認中
         edit: 薬局情報を編集中
@@ -47,6 +49,8 @@ ja:
     pharmacy_show: 薬局情報確認
     pharmacy_edit: 薬局情報編集
     destroy: アカウントを削除する
+  message:
+    narrow_down: 検索条件を設定し、50件以下に絞り込みを行ってください
   enums:
     user:
       sex:

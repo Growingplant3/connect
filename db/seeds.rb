@@ -1,11 +1,11 @@
 first_user = User.create(name: "菊川", email: "kikukawa@gmail.com", password: "password", postcode: "8100000", address: "福岡県福岡市", telephone_number: "09212345678",
-birthday: "04-02", sex: 1, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
+birthday: "1995-04-02".to_date, sex: 1, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
 User.create(name: "野菊", email: "nogiku@gmail.com", password: "password", postcode: "8100021", address: "福岡県北九州市", telephone_number: "09213572468",
-birthday: "08-02", sex: 2, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
+birthday: "1995-08-02".to_date, sex: 2, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
 User.create(name: "菊池", email: "kikuchi@gmail.com", password: "password", postcode: "8100025", address: "福岡県久留米市", telephone_number: "09287654321",
-birthday: "01-02", sex: 1, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
+birthday: "1965-01-02".to_date, sex: 1, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
 User.create(name: "菊川", email: "kikukiku@gmail.com", password: "password", postcode: "8100031", address: "福岡県筑後市", telephone_number: "09213579086",
-birthday: "04-12", sex: 0, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
+birthday: nil, sex: 0, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
 User.create(name: "開発者", email: "developer@gmail.com", password: "password", role: 1)
 User.create(name: "管理者", email: "admin@gmail.com", password: "password", role: 2)
 
