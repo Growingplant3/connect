@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index]
+  before_action :only_for_myself, except: [:index]
 
   def index
     @gender_choices = {}
@@ -40,5 +41,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def only_for_myself
+    if @user != current_user
+      flash[:danger] = "他人のデータは触らせねぇ"
+      redirect_to curent_user
+    end
   end
 end
