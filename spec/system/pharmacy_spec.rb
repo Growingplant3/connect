@@ -5,6 +5,12 @@ RSpec.describe '薬局管理機能', type: :system do
   let(:rape_blossoms_pharmacy) { create(:rape_blossoms_pharmacy) }
   let(:free_time_pharmacy) { create(:free_time_pharmacy) }
   let(:flower_pharmacy) { create(:flower_pharmacy) }
+  let(:first_user) { create(:first_user) }
+  let(:second_user) { create(:second_user) }
+  let(:third_user) { create(:third_user) }
+  let(:fourth_user) { create(:fourth_user) }
+  let(:developer) { create(:developer) }
+  let(:admin) { create(:admin) }
 
   describe 'サインアップ機能' do
     before { visit new_pharmacy_registration_path }
@@ -218,6 +224,111 @@ RSpec.describe '薬局管理機能', type: :system do
           click_on '更新'
           expect(page).to have_content 'アカウント情報を変更しました。'
           expect(current_path).to eq root_path
+        end
+      end
+    end
+
+    describe 'ユーザー検索機能' do
+      before {
+        first_user
+        second_user
+        third_user
+        fourth_user
+        developer
+        admin
+        visit users_path
+      }
+      after { expect(User.count).to eq 6 }
+      context '薬局はユーザー検索ができる' do
+        it '性別が未登録で完全一致検索ができる' do
+          find('#q_sex_eq').find("option[value='0']").select_option
+          click_on '検索'
+          expect(page).to have_content '菊川' && '福岡県筑後市'
+        end
+
+        it '性別が男性で完全一致検索ができる' do
+          find('#q_sex_eq').find("option[value='1']").select_option
+          click_on '検索'
+          expect(page).to have_content '菊川' && '菊池'
+        end
+
+        it '性別が女性で完全一致検索ができる' do
+          find('#q_sex_eq').find("option[value='2']").select_option
+          click_on '検索'
+          expect(page).to have_content '野菊'
+        end
+
+        it 'ユーザー名と性別を組み合わせて検索ができる' do
+          find('#q_name_cont').set('菊川')
+          find('#q_sex_eq').find("option[value='1']").select_option
+          click_on '検索'
+          expect(page).to have_content '菊川' && '福岡県福岡市'
+        end
+
+        it '電話番号と性別を組み合わせて検索ができる' do
+          find('#q_telephone_number_eq').set('09212345678')
+          find('#q_sex_eq').find("option[value='1']").select_option
+          click_on '検索'
+          expect(page).to have_content '菊川' && '福岡県福岡市'
+        end
+
+        it 'メールアドレスと性別を組み合わせて検索ができる' do
+          find('#q_email_cont').set('kikukawa@gmail.com')
+          find('#q_sex_eq').find("option[value='1']").select_option
+          click_on '検索'
+          expect(page).to have_content '菊川' && '福岡県福岡市'
+        end
+
+        it '西暦を指定して誕生日の範囲検索ができる' do
+          find('#q_birthday_cont').set('1995')
+          find('#q_sex_eq')..find("option[value='2']").select_option
+          click_on '検索'
+          expect(page).to have_content '野菊' && '福岡県北九州市'
+        end
+
+        it '西暦と月を指定して誕生日の範囲検索ができる' do
+          find('#q_birthday_cont').set('199508')
+          find('#q_sex_eq')..find("option[value='2']").select_option
+          click_on '検索'
+          expect(page).to have_content '野菊' && '福岡県北九州市'
+        end
+      end
+
+      context '薬局はユーザー検索できない' do
+        it 'ユーザー名が該当しなければ検索できない' do
+          find('#q_name_cont').set('竹林')
+          find('#q_sex_eq').find("option[value='1']").select_option
+          find('#q_email_cont').set('kikukawa@gmail.com')
+          click_on '検索'
+          expect(page).not_to have_content '菊川' && '福岡県福岡市'
+        end
+
+        it '誕生日が範囲に合致しなければ検索できない' do
+          find('#q_birthday_cont').set('2000')
+          find('#q_sex_eq')..find("option[value='2']").select_option
+          click_on '検索'
+          expect(page).not_to have_content '野菊' && '福岡県北九州市'
+        end
+
+        it '電話番号が一致しなければ検索できない' do
+          find('#q_sex_eq').find("option[value='1']").select_option
+          find('#q_telephone_number_eq').set("07012345678")
+          find('#q_email_cont').set('kikukawa@gmail.com')
+          click_on '検索'
+          expect(page).not_to have_content '菊川' && '福岡県福岡市'
+        end
+
+        it 'メールアドレスが一致しなければ検索できない' do
+          find('#q_email_cont').set('nonogiku')
+          find('#q_sex_eq')..find("option[value='2']").select_option
+          click_on '検索'
+          expect(page).not_to have_content '野菊' && '福岡県北九州市'
+        end
+
+        it '管理者と開発者は検索できない' do
+          find('#q_sex_eq')..find("option[value='0']").select_option
+          click_on '検索'
+          expect(page).not_to have_content '管理者' && '開発者'
         end
       end
     end
