@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index]
-  before_action :only_for_myself, except: [:index]
+  before_action :only_myself, except: [:index]
+  before_action :all_pharmacies, only: [:index]
 
   def index
     @gender_choices = {}
@@ -43,10 +44,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def only_for_myself
+  def only_myself
     if @user != current_user
-      flash[:danger] = "他人のデータは触らせねぇ"
-      redirect_to curent_user
+      flash[:alert] = I18n.t('flash.alert.user.only_for_myself')
+      redirect_to current_user
+    end
+  end
+
+  def all_pharmacies
+    unless pharmacy_signed_in?
+      flash[:alert] = I18n.t('flash.alert.pharmacy.all_pharmacies')
+      redirect_to root_path
     end
   end
 end
