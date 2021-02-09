@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Pharmacies::PasswordsController < Devise::PasswordsController
+  include ActionRestrictions
+  before_action :only_pharmacies
+
   # GET /resource/password/new
   # def new
   #   super

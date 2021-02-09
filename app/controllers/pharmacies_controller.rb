@@ -1,5 +1,6 @@
 class PharmaciesController < ApplicationController
   before_action :set_pharmacy, except: [:index]
+  before_action :only_myself, except: %i[index show]
 
   def index
     @q = Pharmacy.ransack(params[:q])
@@ -43,5 +44,12 @@ class PharmaciesController < ApplicationController
 
   def set_pharmacy
     @pharmacy = Pharmacy.find(params[:id])
+  end
+
+  def only_myself
+    if @pharmacy != current_pharmacy
+      flash[:alert] = I18n.t('flash.alert.pharmacy.only_myself')
+      redirect_to root_path
+    end      
   end
 end

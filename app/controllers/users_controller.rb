@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index]
-  before_action :only_myself, except: [:index]
+  before_action :only_myself, except: %i[index show]
   before_action :all_pharmacies, only: [:index]
+  before_action :myself_of_pharmacies, only: [:show]
 
   def index
     @gender_choices = {}
@@ -46,14 +47,21 @@ class UsersController < ApplicationController
 
   def only_myself
     if @user != current_user
-      flash[:alert] = I18n.t('flash.alert.user.only_for_myself')
-      redirect_to current_user
+      flash[:alert] = I18n.t('flash.alert.user.only_myself')
+      redirect_to root_path
     end
   end
 
   def all_pharmacies
     unless pharmacy_signed_in?
       flash[:alert] = I18n.t('flash.alert.pharmacy.all_pharmacies')
+      redirect_to root_path
+    end
+  end
+
+  def myself_of_pharmacies
+    unless @user == current_user || pharmacy_signed_in?
+      flash[:alert] = I18n.t('flash.alert.user.myself_or_pharmacies')
       redirect_to root_path
     end
   end
