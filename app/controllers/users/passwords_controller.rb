@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
+  include ActionRestrictions
+  before_action :only_users
+
   # GET /resource/password/new
   # def new
   #   super

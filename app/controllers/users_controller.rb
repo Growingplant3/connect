@@ -46,8 +46,8 @@ class UsersController < ApplicationController
 
   def only_myself
     if @user != current_user
-      flash[:alert] = I18n.t('flash.alert.user.only_for_myself')
-      redirect_to current_user
+      flash[:alert] = I18n.t('flash.alert.user.only_myself')
+      redirect_to root_path
     end
   end
 

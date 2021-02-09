@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Pharmacies::SessionsController < Devise::SessionsController
+  include ActionRestrictions
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :only_pharmacies
 
   # GET /resource/sign_in
   # def new
