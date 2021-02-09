@@ -9,12 +9,12 @@ ja:
         continue_edit: 続けてユーザー情報を設定してください。
         only_myself: 他人のデータの編集・削除などはできません。
         myself_or_pharmacies: 他人のデータの参照はできません。
-        only_users: ユーザーでログインした際にお使い頂けます。
+        only_users: 薬局をログアウトした際にお使い頂けます。
       pharmacy:
         continue_edit: 続けて薬局情報を設定してください。
         all_pharmacies: ユーザー検索は薬局のみ実施可能です。
         only_myself: 他の薬局のデータの編集・削除などはできません。
-        only_pharmacies: 薬局でログインした際にお使い頂けます。
+        only_pharmacies: ユーザーをログアウトした際にお使い頂けます。
   activerecord:
     attributes:
       pharmacy:
