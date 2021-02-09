@@ -8,9 +8,11 @@ ja:
           update: アカウントの編集ができませんでした。
         continue_edit: 続けてユーザー情報を設定してください。
         only_myself: 他人のデータの参照・編集・削除などはできません。
+        only_users: ユーザーでログインした際にお使い頂けます。
       pharmacy:
         continue_edit: 続けて薬局情報を設定してください。
         all_pharmacies: ユーザー検索は薬局のみ実施可能です。
+        only_pharmacies: 薬局でログインした際にお使い頂けます。
   activerecord:
     attributes:
       pharmacy:
