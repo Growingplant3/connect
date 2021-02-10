@@ -1,6 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'ユーザー管理機能', type: :system do
-  let(:new_user) { FactoryBot.create(:new_user) }
+  let(:new_user) { create(:new_user) }
+  let(:user) { create(:user) }
+  let(:new_pharmacy) { create(:new_pharmacy) }
 
   describe 'サインアップ機能' do
     before { visit new_user_registration_path }
@@ -207,6 +209,102 @@ RSpec.describe 'ユーザー管理機能', type: :system do
           click_on '更新'
           expect(page).to have_content 'アカウント情報を変更しました。'
           expect(current_path).to eq root_path
+        end
+      end
+    end
+  end
+
+  describe 'ユーザー機能の制限' do
+    before {
+      new_user
+      new_pharmacy
+      user
+    }
+    describe '非ログイン状態' do
+      after { expect(current_path).to eq root_path }
+      context 'users_controllerの全てのアクションに制限がある' do
+        it 'indexアクションは呼び出せない' do
+          visit users_path
+          expect(page).to have_content 'ユーザー検索は薬局のみ実施可能です。'
+        end
+
+        it 'showアクションは呼び出せない' do
+          visit user_path(new_user)
+          expect(page).to have_content '他人のデータの参照はできません。'
+        end
+
+        it 'editアクションは呼び出せない' do
+          visit edit_user_path(new_user)
+          expect(page).to have_content '他人のデータの編集・削除などはできません。'
+        end
+      end
+    end
+
+    describe 'ユーザーでログイン状態' do
+      before { user_login(new_user) }
+      context 'users_controllerの一部のアクションに制限がある' do
+        it 'indexアクションは呼び出せない' do
+          visit users_path
+          expect(page).to have_content 'ユーザー検索は薬局のみ実施可能です。'
+          expect(current_path).to eq root_path
+        end
+
+        it 'showアクションは自分のもの以外は呼び出せない' do
+          visit user_path(user)
+          expect(page).to have_content '他人のデータの参照はできません。'
+          expect(current_path).to eq root_path
+        end
+
+        it 'editアクションは自分のもの以外は呼び出せない' do
+          visit edit_user_path(user)
+          expect(page).to have_content '他人のデータの編集・削除などはできません。'
+          expect(current_path).to eq root_path
+        end
+      end
+
+      context 'users/registrations_controllerの一部のアクションに制限がある' do
+        it 'newアクションは呼び出せない' do
+          visit new_user_registration_path
+          expect(page).to have_content 'すでにログインしています。'
+          expect(current_path).to eq root_path
+        end
+      end
+
+      context 'users/sessions_controllerの一部のアクションに制限がある' do
+        it 'newアクションは呼び出せない' do
+          visit new_user_session_path
+          expect(page).to have_content 'すでにログインしています。'
+          expect(current_path).to eq user_path(new_user)
+        end
+      end
+    end
+
+    describe '薬局でログイン状態' do
+      before { pharmacy_login(new_pharmacy) }
+      after { expect(current_path).to eq root_path }
+      context 'users_controllerの一部のアクションに制限がある' do
+        it 'editアクションは呼び出せない' do
+          visit edit_user_path(user)
+          expect(page).to have_content '他人のデータの編集・削除などはできません。'
+        end
+      end
+
+      context 'users_registrations_controllerの全てのアクションに制限がある' do
+        it 'newアクションは呼び出せない' do
+          visit new_user_registration_path
+          expect(page).to have_content '薬局をログアウトした際にお使い頂けます。'
+        end
+
+        it 'editアクションは呼び出せない' do
+          visit edit_user_registration_path
+          expect(page).to have_content '薬局をログアウトした際にお使い頂けます。'
+        end
+      end
+
+      context 'users/sessions_controllerの一部のアクションに制限がある' do
+        it 'newアクションは呼び出せない' do
+          visit new_user_session_path
+          expect(page).to have_content '薬局をログアウトした際にお使い頂けます。'
         end
       end
     end
