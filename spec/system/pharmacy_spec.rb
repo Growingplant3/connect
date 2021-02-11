@@ -5,6 +5,7 @@ RSpec.describe '薬局管理機能', type: :system do
   let(:rape_blossoms_pharmacy) { create(:rape_blossoms_pharmacy) }
   let(:free_time_pharmacy) { create(:free_time_pharmacy) }
   let(:flower_pharmacy) { create(:flower_pharmacy) }
+  let(:new_user) { create(:new_user) }
   let(:first_user) { create(:first_user) }
   let(:second_user) { create(:second_user) }
   let(:third_user) { create(:third_user) }
@@ -385,6 +386,81 @@ RSpec.describe '薬局管理機能', type: :system do
         click_on '検索'
         expect(page).to have_content 'ひまわり薬局'
         expect(page).not_to have_content 'なのはな薬局' && 'ひまな薬局' && 'はな薬局'
+      end
+    end
+  end
+  
+  describe '薬局機能の制限' do
+    before {
+      new_pharmacy
+      first_user
+      sunflower_pharmacy
+    }
+    describe '非ログイン状態' do
+      context 'pharmacies_controllerの一部のアクションに制限がある' do
+        it 'editアクションは呼び出せない' do
+          visit edit_pharmacy_path(new_pharmacy)
+          expect(page).to have_content '他の薬局のデータの編集・削除などはできません。'
+          expect(current_path).to eq root_path
+        end
+      end
+    end
+
+    describe 'ユーザーでログイン状態' do
+      before { user_login(new_user) }
+      after { expect(current_path).to eq root_path }
+      context 'pharmacies_controllerの一部のアクションに制限がある' do
+        it 'editアクションは呼び出せない' do
+          visit edit_pharmacy_path(new_pharmacy)
+          expect(page).to have_content '他の薬局のデータの編集・削除などはできません。'
+        end
+      end
+
+      context 'pharmacies/registrations_controllerの一部のアクションに制限がある' do
+        it 'newアクションは呼び出せない' do
+          visit new_pharmacy_registration_path
+          expect(page).to have_content 'ユーザーをログアウトした際にお使い頂けます。'
+          
+        end
+
+        it 'editアクションは呼び出せない' do
+          visit edit_pharmacy_registration_path
+          expect(page).to have_content 'ユーザーをログアウトした際にお使い頂けます。'
+        end
+      end
+
+      context 'pharmacies/sessions_controllerの一部のアクションに制限がある' do
+        it 'newアクションは呼び出せない' do
+          visit new_pharmacy_session_path
+          expect(page).to have_content 'ユーザーをログアウトした際にお使い頂けます。'
+        end
+      end
+    end
+
+    describe '薬局でログイン状態' do
+      before { pharmacy_login(new_pharmacy) }
+      context 'pharmacies_controllerの一部のアクションに制限がある' do
+        it 'editアクションは自分のもの以外は呼び出せない' do
+          visit edit_pharmacy_path(sunflower_pharmacy)
+          expect(page).to have_content '他の薬局のデータの編集・削除などはできません。'
+          expect(current_path).to eq root_path
+        end
+      end
+
+      context 'pharmacies/registrations_controllerの一部のアクションに制限がある' do
+        it 'newアクションは呼び出せない' do
+          visit new_pharmacy_registration_path
+          expect(page).to have_content 'すでにログインしています。'
+          expect(current_path).to eq root_path
+        end
+      end
+
+      context 'pharmacies/sessions_controllerの一部のアクションに制限がある' do
+        it 'newアクションは呼び出せない' do
+          visit new_pharmacy_session_path
+          expect(page).to have_content 'すでにログインしています。'
+          expect(current_path).to eq pharmacy_path(new_pharmacy)
+        end
       end
     end
   end
