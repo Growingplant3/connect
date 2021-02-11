@@ -289,7 +289,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         end
       end
 
-      context 'users_registrations_controllerの全てのアクションに制限がある' do
+      context 'users/registrations_controllerの全てのアクションに制限がある' do
         it 'newアクションは呼び出せない' do
           visit new_user_registration_path
           expect(page).to have_content '薬局をログアウトした際にお使い頂けます。'
