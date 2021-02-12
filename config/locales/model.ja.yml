@@ -49,8 +49,14 @@ ja:
     pharmacy_show: 薬局情報確認
     pharmacy_edit: 薬局情報編集
     destroy: アカウントを削除する
+    like_create: この薬局にいいねする
+    like_destroy: この薬局のいいねを解除する
   message:
     narrow_down: 検索条件を設定し、50件以下に絞り込みを行ってください
+    great_number_of_likes: "%{count}件のいいねを獲得しており、多くのユーザーから支持されています！"
+    number_of_likes: "%{count}件のいいねを獲得しています。"
+    like_create: この薬局にいいねをつけました
+    like_destroy: この薬局のいいねを解除しました
   enums:
     user:
       sex:

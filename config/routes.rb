@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     sessions: 'pharmacies/sessions'
   }
   resources :pharmacies, only: %i[index show edit update destroy]
+  resources :likes, only: %i[create destroy]
 end
