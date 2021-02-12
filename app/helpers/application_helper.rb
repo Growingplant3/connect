@@ -53,4 +53,27 @@ module ApplicationHelper
     close = activity.closing_time.strftime("%R")
     "#{open}〜#{close}"
   end
+
+  def button_view(resource)
+    if resource == current_pharmacy
+      render partial: "button", locals: { pharmacy: resource }
+    end
+  end
+
+  def likes_button_view(resource)
+    return unless user_signed_in?
+    if current_user.likes.find_by_pharmacy_id(resource)
+      link_to I18n.t('button.like_destroy'), like_path(pharmacy_id: resource), method: :delete
+    else
+      link_to I18n.t('button.like_create'), likes_path(pharmacy_id: resource), method: :post
+    end
+  end
+
+  def likes_expression(length)
+    if length >= 100
+      I18n.t('message.great_number_of_likes', count: length)
+    elsif length > 0
+      I18n.t('message.number_of_likes', count: length)
+    end
+  end
 end
