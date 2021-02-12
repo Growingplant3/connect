@@ -1,6 +1,10 @@
 <h1><%= t('activerecord.title.pharmacy.show') %></h1>
 
 <p>
+  <%= likes_expression(@pharmacy.likes.length) %>
+</p>
+
+<p>
   <%= t('activerecord.attributes.pharmacy.name') %>:<%= @pharmacy.name %><br>
   <%= t('activerecord.attributes.pharmacy.email') %>:<%= @pharmacy.email %><br>
   <%= t('activerecord.attributes.pharmacy.postcode') %>:<%= @pharmacy.postcode %><br>
@@ -16,7 +20,5 @@
   <%= t('activerecord.attributes.pharmacy.note') %>:<%= @pharmacy.note %><br>
 </p>
 
-<% if @pharmacy == current_pharmacy %>
-  <%= link_to I18n.t('button.pharmacy_edit'), edit_pharmacy_path(@pharmacy) %><br>
-  <%= link_to I18n.t('button.destroy'), @pharmacy, method: :delete, data: { confirm: I18n.t('devise.registrations.edit.are_you_sure') } %>
-<% end %>
+<%= likes_button_view(@pharmacy) %>
+<%= button_view(@pharmacy) %>
