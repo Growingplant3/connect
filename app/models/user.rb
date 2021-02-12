@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validate :should_be_past, on: :update
   enum sex: { unknown: 0, male: 1, female: 2 }
   enum role: { normal: 0, developer: 1, master: 2 }
+  scope :standard_exclusion, -> { where(role: 0) }
 
   def before_save
     self.postcode = DowncaseCallback.replace_to_half_num(self.postcode) if self.postcode.present?
@@ -24,19 +25,24 @@ class User < ApplicationRecord
     end
   end
 
-  def self.selection(params_q)
-    return if params_q.blank?
-    if params_q[:birthday_cont].present? && self.regular_expression_confirmation(params_q[:birthday_cont])
-      digits = params_q[:birthday_cont].length
-      search_range = self.judgment_of_characters_and_conversion(params_q[:birthday_cont],digits)
-      if search_range == nil
-        self.where(role: 0)
-      else
-        self.where(role: 0).where(birthday: search_range)
-      end
-    else
-      self.where(role: 0)
+  def self.set_gender
+    gender_choices = {}
+    self.sexes_i18n.values.each_with_index do |value, index|
+      gender_choices[value] = index
     end
+    gender_choices
+  end
+
+  def self.selection(params_q)
+    return self.all if params_q.blank? || params_q[:birthday_cont].blank?
+    string = params_q[:birthday_cont]
+    params_q[:birthday_cont] = ""
+    if self.regular_expression_confirmation(string)
+      digits = string.length
+      search_range = self.judgment_of_characters_and_conversion(string,digits)
+      return self.where(birthday: search_range) unless search_range.nil?
+    end
+    self.all
   end
 
   def self.regular_expression_confirmation(string)
