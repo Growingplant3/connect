@@ -5,12 +5,9 @@ class UsersController < ApplicationController
   before_action :myself_of_pharmacies, only: [:show]
 
   def index
-    @gender_choices = {}
-    User.sexes_i18n.values.each_with_index do |value, index|
-      @gender_choices[value] = index
-    end
-    @q = User.ransack(params[:q])
-    @Users = @q.result(distinct: true).selection(params[:q])
+    @gender_choices = User.set_gender
+    @q = User.standard_exclusion.selection(params[:q]).ransack(params[:q])
+    @Users = @q.result(distinct: true)
   end
 
   def show
