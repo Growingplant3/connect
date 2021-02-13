@@ -212,6 +212,39 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         end
       end
     end
+
+    describe 'いいね機能' do
+      context 'いいねをつける' do
+        before {
+          expect(Like.all.count).to eq 0
+          visit pharmacy_path(new_pharmacy)
+          click_on 'この薬局にいいねする'
+        }
+        it 'いいねをつけていない薬局には、いいねをつけられる' do
+          expect(page).to have_content 'この薬局にいいねをつけました'
+          expect(Like.first.user).to eq new_user
+          expect(Like.first.pharmacy).to eq new_pharmacy
+        end
+
+        it 'いいねをつけている薬局には、さらにいいねをつける事はできない' do
+          expect(page).not_to have_content 'この薬局にいいねする'
+        end
+      end
+
+      context 'いいねを解除する' do
+        before { visit pharmacy_path(new_pharmacy) }
+        it 'いいねをつけている薬局の、いいねを解除できる' do
+          click_on 'この薬局にいいねする'
+          click_on 'この薬局のいいねを解除する'
+          expect(Like.all.count).to eq 0
+          expect(page).to have_content 'この薬局のいいねを解除しました'
+        end
+
+        it 'いいねをつけていない薬局の、いいねを解除する事はできない' do
+          expect(page).not_to have_content 'この薬局のいいねを解除する'
+        end
+      end
+    end
   end
 
   describe 'ユーザー機能の制限' do
