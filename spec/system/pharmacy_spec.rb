@@ -12,6 +12,7 @@ RSpec.describe '薬局管理機能', type: :system do
   let(:fourth_user) { create(:fourth_user) }
   let(:developer) { create(:developer) }
   let(:admin) { create(:admin) }
+  let(:like) { create(:like, user_id: new_user.id, pharmacy_id: new_pharmacy.id) }
 
   describe 'サインアップ機能' do
     before { visit new_pharmacy_registration_path }
@@ -462,6 +463,26 @@ RSpec.describe '薬局管理機能', type: :system do
           expect(current_path).to eq pharmacy_path(new_pharmacy)
         end
       end
+    end
+  end
+
+  describe 'いいね機能' do
+    before {
+      pharmacy_login(new_pharmacy)
+    }
+    context '薬局でログインした場合' do
+      it '薬局が薬局に対して、いいねをつけたり消したりはできない' do
+        visit pharmacy_path(new_pharmacy)
+        expect(page).not_to have_content 'この薬局にいいねする'
+      end
+
+      # it 'いいね数が100以上になると画面表示が変更される' do
+      #   100.times do
+      #     like
+      #   end
+      #   visit pharmacy_path(new_pharmacy)
+      #   expect(page).to have_content '多くのユーザーから支持されています！'
+      # end
     end
   end
 end
