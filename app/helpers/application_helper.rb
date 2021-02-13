@@ -69,6 +69,15 @@ module ApplicationHelper
     end
   end
 
+  def infoformation_disclosures_button_view(resource)
+    return unless user_signed_in?
+    if current_user.information_disclosures.find_by_pharmacy_id(resource)
+      link_to I18n.t('button.information_disclosure_destroy'), information_disclosure_path(pharmacy_id: resource), method: :delete
+    else
+      link_to I18n.t('button.information_disclosure_create'), information_disclosures_path(pharmacy_id: resource), method: :post, data: { confirm: I18n.t('message.check_again') }
+    end
+  end
+
   def likes_expression(length)
     if length >= 100
       I18n.t('message.great_number_of_likes', count: length)
