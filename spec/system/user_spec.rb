@@ -245,6 +245,43 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         end
       end
     end
+
+    describe '情報開示機能' do
+      context '情報開示を許可する' do
+        before {
+          expect(InformationDisclosure.all.count).to eq 0
+          visit pharmacy_path(new_pharmacy)
+          page.accept_confirm do
+            click_on 'この薬局へ情報を公開する'
+          end
+        }
+        it '情報開示を許可していない薬局には、情報開示が許可できる' do
+          expect(page).to have_content '自分の情報を公開しました'
+          expect(InformationDisclosure.first.user).to eq new_user
+          expect(InformationDisclosure.first.pharmacy).to eq new_pharmacy
+        end
+
+        it '情報開示を許可している薬局には、さらに情報開示を許可する事はできない' do
+          expect(page).not_to have_content 'この薬局へ情報を公開する'
+        end
+      end
+
+      context '情報開示許可を解除する' do
+        before { visit pharmacy_path(new_pharmacy) }
+        it '情報開示を許可している薬局の、情報開示許可を解除できる' do
+          page.accept_confirm do
+            click_on 'この薬局へ情報を公開する'
+          end
+          click_on 'この薬局への情報公開を中止する'
+          expect(Like.all.count).to eq 0
+          expect(page).to have_content '自分の情報公開を中止しました'
+        end
+
+        it '情報公開を許可していない薬局の、情報公開を解除する事はできない' do
+          expect(page).not_to have_content 'この薬局への情報公開を中止する'
+        end
+      end
+    end
   end
 
   describe 'ユーザー機能の制限' do
@@ -302,7 +339,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
           expect(current_path).to eq root_path
         end
       end
-
+      
       context 'users/sessions_controllerの一部のアクションに制限がある' do
         it 'newアクションは呼び出せない' do
           visit new_user_session_path

@@ -13,6 +13,10 @@ RSpec.describe '薬局管理機能', type: :system do
   let(:developer) { create(:developer) }
   let(:admin) { create(:admin) }
   let(:like) { create(:like, user_id: new_user.id, pharmacy_id: new_pharmacy.id) }
+  let(:first_user_information_disclosure) { create(:information_disclosure, user_id: first_user.id, pharmacy_id: new_pharmacy.id) }
+  let(:second_user_information_disclosure) { create(:information_disclosure, user_id: second_user.id, pharmacy_id: new_pharmacy.id) }
+  let(:third_user_information_disclosure) { create(:information_disclosure, user_id: third_user.id, pharmacy_id: new_pharmacy.id) }
+  let(:fourth_user_information_disclosure) { create(:information_disclosure, user_id: fourth_user.id, pharmacy_id: new_pharmacy.id) }
 
   describe 'サインアップ機能' do
     before { visit new_pharmacy_registration_path }
@@ -187,7 +191,7 @@ RSpec.describe '薬局管理機能', type: :system do
           click_on '更新'
           expect(page).to have_content '0312348765'
         end
-
+        
         it '緊急時電話番号に全角数字を入力すると半角数字に変換されて保存される' do
           fill_in 'pharmacy[emergency_telephone_number]', with: '０３１２３４５６７８'
           click_on '更新'
@@ -232,13 +236,14 @@ RSpec.describe '薬局管理機能', type: :system do
 
     describe 'ユーザー検索機能' do
       before {
-        first_user
-        second_user
-        third_user
-        fourth_user
+        first_user_information_disclosure
+        second_user_information_disclosure
+        third_user_information_disclosure
+        fourth_user_information_disclosure
         developer
         admin
-        visit users_path
+        visit root_path
+        click_on 'ユーザー検索'
       }
       after { expect(User.count).to eq 6 }
       context '薬局はユーザー検索ができる' do
@@ -331,6 +336,13 @@ RSpec.describe '薬局管理機能', type: :system do
           find('#q_sex_eq')..find("option[value='0']").select_option
           click_on '検索'
           expect(page).not_to have_content '管理者' && '開発者'
+        end
+
+        it '情報開示を許可されていなければ検索できない' do
+          second_user_information_disclosure.destroy
+          find('#q_sex_eq').find("option[value='2']").select_option
+          click_on '検索'
+          expect(page).not_to have_content '野菊'
         end
       end
     end
