@@ -47,6 +47,12 @@ module ApplicationHelper
     end
   end
 
+  def user_search_button
+    if pharmacy_signed_in?
+      link_to t('activerecord.title.user.search'), users_path(session[:pharmacy_id] = current_pharmacy.id)
+    end      
+  end
+
   def from_start_to_finish(activity)
     return if activity.business == "false" || activity.opening_time.blank? || activity.closing_time.blank?
     open = activity.opening_time.strftime("%R")
