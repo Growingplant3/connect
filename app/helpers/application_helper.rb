@@ -91,4 +91,16 @@ module ApplicationHelper
       I18n.t('message.number_of_likes', count: length)
     end
   end
+
+  def sample_user_login
+    unless user_signed_in? || pharmacy_signed_in?
+      link_to t('button.sample_user'), homes_sample_user_sign_in_path, method: :post
+    end
+  end
+
+  def sample_pharmacy_login
+    unless user_signed_in? || pharmacy_signed_in?
+      link_to t('button.sample_pharmacy'), homes_sample_pharmacy_sign_in_path, method: :post
+    end
+  end
 end
