@@ -18,4 +18,8 @@ class Pharmacy < ApplicationRecord
     self.normal_telephone_number = DowncaseCallback.replace_to_half_num(self.normal_telephone_number) if self.normal_telephone_number.present?
     self.emergency_telephone_number = DowncaseCallback.replace_to_half_num(self.emergency_telephone_number) if self.emergency_telephone_number.present?
   end
+
+  def self.have_search_permission(session_pharmacy_id)
+    self.find(session_pharmacy_id).information_disclosures.pluck(:user_id)
+  end
 end
