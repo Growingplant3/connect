@@ -14,7 +14,9 @@ class User < ApplicationRecord
   validate :should_be_past, on: :update
   enum sex: { unknown: 0, male: 1, female: 2 }
   enum role: { normal: 0, developer: 1, master: 2 }
-  scope :standard_exclusion, -> { where(role: 0) }
+  scope :standard_exclusion, -> (limited_user_ids) { gave_search_permission(limited_user_ids).only_general }
+  scope :only_general, -> { where(role: 0) }
+  scope :gave_search_permission, -> (limited_user_ids) { where(id: limited_user_ids) }
 
   def before_save
     self.postcode = DowncaseCallback.replace_to_half_num(self.postcode) if self.postcode.present?
