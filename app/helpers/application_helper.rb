@@ -47,6 +47,12 @@ module ApplicationHelper
     end
   end
 
+  def user_search_button
+    if pharmacy_signed_in?
+      link_to t('activerecord.title.user.search'), users_path(session[:pharmacy_id] = current_pharmacy.id)
+    end      
+  end
+
   def from_start_to_finish(activity)
     return if activity.business == "false" || activity.opening_time.blank? || activity.closing_time.blank?
     open = activity.opening_time.strftime("%R")
@@ -66,6 +72,15 @@ module ApplicationHelper
       link_to I18n.t('button.like_destroy'), like_path(pharmacy_id: resource), method: :delete
     else
       link_to I18n.t('button.like_create'), likes_path(pharmacy_id: resource), method: :post
+    end
+  end
+
+  def infoformation_disclosures_button_view(resource)
+    return unless user_signed_in?
+    if current_user.information_disclosures.find_by_pharmacy_id(resource)
+      link_to I18n.t('button.information_disclosure_destroy'), information_disclosure_path(pharmacy_id: resource), method: :delete
+    else
+      link_to I18n.t('button.information_disclosure_create'), information_disclosures_path(pharmacy_id: resource), method: :post, data: { confirm: I18n.t('message.check_again') }
     end
   end
 

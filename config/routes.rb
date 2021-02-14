@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   }
   resources :pharmacies, only: %i[index show edit update destroy]
   resources :likes, only: %i[create destroy]
+  resources :information_disclosures, only: %i[create destroy]
 end
