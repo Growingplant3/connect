@@ -25,3 +25,9 @@ normal_telephone_number: "0472234499", emergency_telephone_number: "08087656543"
   Activity.create(pharmacy_id: pharmacy_identification+1, day_of_the_week: 5, business: "false", opening_time: nil, closing_time: nil)
   Activity.create(pharmacy_id: pharmacy_identification+1, day_of_the_week: 6, business: "false", opening_time: nil, closing_time: nil)
 end
+
+1.upto(4) do |user_identification|
+  1.upto(4) do |pharmacy_identification|
+    InformationDisclosure.create(user_id: user_identification, pharmacy_id: pharmacy_identification)
+  end
+end
