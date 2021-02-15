@@ -14,10 +14,10 @@ class MedicineNotebookRecordsController < ApplicationController
     @medicine_notebook_record = @user.medicine_notebook_records.build(medicine_notebook_record_params)
     @medicine_notebook_record.pharmacy_id = current_pharmacy.id
     if @medicine_notebook_record.save
-      flash[:notice] = "処方記録を作成しました"
-      redirect_to user_medicine_notebook_records_path(params[:user_id])
+      flash[:notice] = I18n.t('message.medicine_notebook_record.create_success')
+      redirect_to user_medicine_notebook_records_path(@user)
     else
-      flash.now[:notice] = "処方記録を作成できません"
+      flash.now[:notice] = I18n.t('message.medicine_notebook_record.create_failure')
       render :new
     end
   end
@@ -30,18 +30,18 @@ class MedicineNotebookRecordsController < ApplicationController
 
   def update
     if @medicine_notebook_record.update(medicine_notebook_record_params)
-      flash[:notice] = "処方記録を更新しました"
+      flash[:notice] = I18n.t('message.medicine_notebook_record.update_success')
       redirect_to @medicine_notebook_record
     else
-      flash.now[:notice] = "処方記録を更新できません"
+      flash.now[:notice] = I18n.t('message.medicine_notebook_record.update_failure')
       render :edit
     end
   end
 
   def destroy
     @medicine_notebook_record.destroy
-    flash[:alert] = "処方記録を削除しました"
-    redirect_to user_medicine_notebook_records_path(params[:user_id])
+    flash[:alert] = I18n.t('message.medicine_notebook_record.destroy_success')
+    redirect_to user_medicine_notebook_records_path(@user)
   end
 
   private
