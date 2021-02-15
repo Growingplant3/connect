@@ -2,8 +2,7 @@
 
 <%= link_to t('button.transition_from_medicine_notebook_record_to_users_show', user_name: @user.name), @user %>
 <br>
-<%= link_to t('button.medicine_notebook_record_create'), new_user_medicine_notebook_record_path(@user) %>
-<br>
+<%= pharmacy_button_in_medicine_notebook_records_index(@user) %>
 <%= nothing_medicine_notebook_record(@medicine_notebook_records) %>
 
 <% @medicine_notebook_records.each do |record| %>
