@@ -16,5 +16,11 @@
   <%= t('activerecord.attributes.user.note') %>:<%= @user.note %><br>
 </p>
 
-<%= link_to I18n.t('button.user_edit'), edit_user_path(@user) %><br>
-<%= link_to I18n.t('button.destroy'), @user, method: :delete, data: { confirm: I18n.t('devise.registrations.edit.are_you_sure') } %>
+<% if @user == current_user %>
+  <%= link_to I18n.t('button.user_edit'), edit_user_path(@user) %><br>
+  <%= link_to I18n.t('button.destroy'), @user, method: :delete, data: { confirm: I18n.t('devise.registrations.edit.are_you_sure') } %>
+<% end %>
+
+<% if pharmacy_signed_in? %>
+  <%= link_to "処方記録を作成する", new_user_medicine_notebook_record_path(@user) %>
+<% end %>
