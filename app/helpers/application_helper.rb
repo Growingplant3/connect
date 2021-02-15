@@ -128,15 +128,23 @@ module ApplicationHelper
     end
   end
 
-  def pharmacy_button_in_users_show(user)
+  def pharmacy_or_current_user_button_in_users_show(user)
     if pharmacy_signed_in?
       render partial: "shared/pharmacy_button_in_users_show", locals: { user: user }
+    elsif user == current_user
+      render partial: "shared/current_user_button_in_users_show", locals: { user: user }
     end
   end
 
   def nothing_medicine_notebook_record(medicine_notebook_record)
     if medicine_notebook_record.blank?
       I18n.t('activerecord.attributes.medicine_notebook_record.index.nothing')
+    end
+  end
+
+  def pharmacy_button_in_medicine_notebook_records_index(user)
+    if pharmacy_signed_in?
+      render partial: "shared/pharmacy_button_in_medicine_notebook_records_index", locals: { user: user }
     end
   end
 end
