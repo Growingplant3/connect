@@ -56,6 +56,8 @@ ja:
       medicine_notebook_record:
         index: "%{user_name}さんの処方内容記録一覧"
         new: "%{user_name}さんの処方内容記録作成"
+        show: "%{user_name}さんの処方内容記録を参照中"
+        notification: 確認事項
   button:
     sign_out: ログアウト
     user_show: ユーザー情報確認
@@ -71,6 +73,7 @@ ja:
     sample_pharmacy: サンプル薬局でログインする
     medicine_notebook_record_index: 処方内容一覧を参照する
     medicine_notebook_record_create: 処方内容記録を作成する
+    medicine_notebook_record_show: 詳細を確認する
     transition_from_medicine_notebook_record_to_users_show: "%{user_name}さんのページへ移動する"
   message:
     narrow_down: 検索条件を設定し、50件以下に絞り込みを行ってください
