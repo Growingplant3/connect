@@ -18,7 +18,6 @@ class MedicineNotebookRecordsController < ApplicationController
       redirect_to user_medicine_notebook_records_path(@user)
     else
       flash.now[:notice] = I18n.t('message.medicine_notebook_record.create_failure')
-      # redirect_to new_user_medicine_notebook_record_path(@user)
       render :new
     end
   end
@@ -52,7 +51,7 @@ class MedicineNotebookRecordsController < ApplicationController
   end
 
   def set_medicine_notebook_record
-    @medicine_notebook_record = MedicineNotebookRecord.find(params[:medicine_notebook_record_id])
+    @medicine_notebook_record = MedicineNotebookRecord.find(params[:id])
   end
 
   def set_user
