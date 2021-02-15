@@ -1,4 +1,4 @@
-<h1>処方記録作成ページだよ</h1>
+<h1><%= t('activerecord.title.medicine_notebook_record.new', user_name: @user.name ) %></h1>
 <hr>
 
-<%= render partial: "form", locals: { medicine_notebook_record: @medicine_notebook_record} %>
+<%= render partial: "form", locals: { medicine_notebook_record: @medicine_notebook_record } %>
