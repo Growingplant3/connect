@@ -83,6 +83,12 @@ ja:
     check_again: 情報公開することにより、この薬局がユーザー検索機能によってあなたを検索することができるようになりますが、本当によろしいですか？
     sample_user_login: サンプルユーザーでログインしました
     sample_pharmacy_login: サンプル薬局でログインしました
+    medicine_notebook_record:
+      create_success: 処方内容記録を作成しました
+      create_failure: 処方内容記録を作成できません
+      update_success: 処方内容記録を更新しました
+      update_failure: 処方内容記録を更新できません
+      destroy_success: 処方内容記録を削除しました
   enums:
     user:
       sex:
