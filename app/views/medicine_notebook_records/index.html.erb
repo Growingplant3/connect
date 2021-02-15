@@ -1,0 +1,11 @@
+<h1>処方記録一覧ですよ</h1>
+
+<%= link_to "処方記録を作成する", new_user_medicine_notebook_record_path(params[:user_id]) %>
+
+<% @medicine_notebook_records.each do |record| %>
+  <div>
+    <%= "処方箋発行日: #{record.date_of_issue}" %><br>
+    <%= "医療機関名: #{record.medical_institution_name}" %><br>
+    <%= "備考: #{record.note}" %><br>
+  </div>
+<% end %>

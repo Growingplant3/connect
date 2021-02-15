@@ -1,0 +1,42 @@
+  
+<% if medicine_notebook_record.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h2><%= pluralize(medicine_notebook_record.errors.count, t('errors.messages.can_not_create_because_have_any_error')) %></h2>
+    <ul>
+      <% medicine_notebook_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: medicine_notebook_record, local: true, url: create_or_update_root ) do |f| %>
+  <div>
+    <%= f.label :date_of_issue %>
+    <%= f.date_field :date_of_issue %>
+  </div>
+
+  <div>
+    <%= f.label :date_of_dispensing %>
+    <%= f.date_field :date_of_dispensing %>
+  </div>
+
+  <div>
+    <%= f.label :medical_institution_name %>
+    <%= f.text_field :medical_institution_name %>
+  </div>
+
+  <div>
+    <%= f.label :doctor_name %>
+    <%= f.text_field :doctor_name %>
+  </div>
+
+  <div>
+    <%= f.label :note %>
+    <%= f.text_field :note %>
+  </div>
+
+  <%= f.submit action_name_button %>
+<% end %>
+
+<%= link_to "一覧表示に戻る", user_medicine_notebook_records_path(params[:user_id]) %>
