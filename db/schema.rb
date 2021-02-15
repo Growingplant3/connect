@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_151339) do
+ActiveRecord::Schema.define(version: 2021_02_15_021133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,20 @@ ActiveRecord::Schema.define(version: 2021_02_13_151339) do
     t.integer "pharmacy_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "medicine_notebook_records", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "pharmacy_id"
+    t.date "date_of_issue"
+    t.date "date_of_dispensing"
+    t.string "medical_institution_name"
+    t.string "doctor_name"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pharmacy_id"], name: "index_medicine_notebook_records_on_pharmacy_id"
+    t.index ["user_id"], name: "index_medicine_notebook_records_on_user_id"
   end
 
   create_table "pharmacies", force: :cascade do |t|
@@ -90,4 +104,6 @@ ActiveRecord::Schema.define(version: 2021_02_13_151339) do
   end
 
   add_foreign_key "activities", "pharmacies"
+  add_foreign_key "medicine_notebook_records", "pharmacies"
+  add_foreign_key "medicine_notebook_records", "users"
 end
