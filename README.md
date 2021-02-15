@@ -55,8 +55,9 @@ https://drive.google.com/file/d/1wyqjp4JQAzVkzKwdzNbWUTZr66QpdFWG/view?usp=shari
 
 #### 使用予定Gem
 devise<br>
+ransack<br>
 
 #### 実装予定機能
 deviseでのサインアップ/ログイン機能<br>
 UserのPharmacyフォロー機能(いいね)<br>
-Google map APIを用いた登録済み薬局住所から地図出力機能<br>
+gem ransackでの検索機能<br>
