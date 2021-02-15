@@ -116,9 +116,27 @@ module ApplicationHelper
   def action_name_button
     case action_name
     when "new" || "create"
-      "登録する？"
+      I18n.t('helpers.submit.create')
     when "edit" || "update"
-      "更新する？"
+      I18n.t('helpers.submit.update')
+    end
+  end
+
+  def user_button_in_users_show(user)
+    if user == current_user
+      render partial: "shared/user_button_in_users_show", locals: { user: user }
+    end
+  end
+
+  def pharmacy_button_in_users_show(user)
+    if pharmacy_signed_in?
+      render partial: "shared/pharmacy_button_in_users_show", locals: { user: user }
+    end
+  end
+
+  def nothing_medicine_notebook_record(medicine_notebook_record)
+    if medicine_notebook_record.blank?
+      I18n.t('activerecord.attributes.medicine_notebook_record.index.nothing')
     end
   end
 end
