@@ -1,11 +1,15 @@
-<h1>処方記録一覧ですよ</h1>
+<h1><%= t('activerecord.title.medicine_notebook_record.index', user_name: @user.name) %></h1>
 
-<%= link_to "処方記録を作成する", new_user_medicine_notebook_record_path(params[:user_id]) %>
+<%= link_to t('button.transition_from_medicine_notebook_record_to_users_show', user_name: @user.name), @user %>
+<br>
+<%= link_to t('button.medicine_notebook_record_create'), new_user_medicine_notebook_record_path(@user) %>
+<br>
+<%= nothing_medicine_notebook_record(@medicine_notebook_records) %>
 
 <% @medicine_notebook_records.each do |record| %>
   <div>
-    <%= "処方箋発行日: #{record.date_of_issue}" %><br>
-    <%= "医療機関名: #{record.medical_institution_name}" %><br>
-    <%= "備考: #{record.note}" %><br>
+    <%= t('activerecord.attributes.medicine_notebook_record.index.date_of_issue', date_of_issue: record.date_of_issue) %><br>
+    <%= t('activerecord.attributes.medicine_notebook_record.index.medical_institution_name', medical_institution_name: record.medical_institution_name) %><br>
+    <%= t('activerecord.attributes.medicine_notebook_record.index.note', note: record.note) %><br>
   </div>
 <% end %>
