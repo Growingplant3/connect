@@ -53,6 +53,8 @@ ja:
     like_destroy: この薬局のいいねを解除する
     information_disclosure_create: この薬局へ情報を公開する
     information_disclosure_destroy: この薬局への情報公開を中止する
+    sample_user: サンプルユーザーでログインする
+    sample_pharmacy: サンプル薬局でログインする
   message:
     narrow_down: 検索条件を設定し、50件以下に絞り込みを行ってください
     great_number_of_likes: "%{count}件のいいねを獲得しており、多くのユーザーから支持されています！"
@@ -62,6 +64,8 @@ ja:
     information_disclosure_create: "%{pharmacy_name}に対して、自分の情報を公開しました"
     information_disclosure_destroy: "%{pharmacy_name}に対して、自分の情報公開を中止しました"
     check_again: 情報公開することにより、この薬局がユーザー検索機能によってあなたを検索することができるようになりますが、本当によろしいですか？
+    sample_user_login: サンプルユーザーでログインしました
+    sample_pharmacy_login: サンプル薬局でログインしました
   enums:
     user:
       sex:
