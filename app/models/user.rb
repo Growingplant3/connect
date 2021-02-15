@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
   def should_be_past
     if birthday.present? && birthday > Date.current
-      errors.add(:birthday, I18n.t('errors.messages.should_be_past'))
+      errors.add(:birthday, I18n.t('errors.messages.birthday_should_be_past'))
     end
   end
 
