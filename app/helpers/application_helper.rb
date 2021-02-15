@@ -109,7 +109,7 @@ module ApplicationHelper
     when "new" || "create"
       user_medicine_notebook_records_path(params[:user_id]) if controller_name == "medicine_notebook_records"
     when "edit" || "update"
-      edit_user_medicine_notebook_record(params[:user_id]) if controller_name == "medicine_notebook_records"
+      edit_user_medicine_notebook_record_path(params[:user_id]) if controller_name == "medicine_notebook_records"
     end
   end
 
