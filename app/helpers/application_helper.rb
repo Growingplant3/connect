@@ -103,4 +103,22 @@ module ApplicationHelper
       link_to t('button.sample_pharmacy'), homes_sample_pharmacy_sign_in_path, method: :post
     end
   end
+
+  def create_or_update_root
+    case action_name
+    when "new" || "create"
+      user_medicine_notebook_records_path(params[:user_id]) if controller_name == "medicine_notebook_records"
+    when "edit" || "update"
+      edit_user_medicine_notebook_record(params[:user_id]) if controller_name == "medicine_notebook_records"
+    end
+  end
+
+  def action_name_button
+    case action_name
+    when "new" || "create"
+      "登録する？"
+    when "edit" || "update"
+      "更新する？"
+    end
+  end
 end
