@@ -6,7 +6,11 @@
 <%= t('activerecord.attributes.medicine_notebook_record.medical_institution_name') %>:<%= @medicine_notebook_record.medical_institution_name %><br>
 <%= t('activerecord.attributes.medicine_notebook_record.doctor_name') %>:<%= @medicine_notebook_record.doctor_name %><br>
 <%= t('activerecord.attributes.medicine_notebook_record.note') %>:<%= @medicine_notebook_record.note %><br>
+<br>
+<%= link_to t('helpers.submit.update'), edit_user_medicine_notebook_record_path(@user,@medicine_notebook_record) %><br>
+<%= link_to t('helpers.submit.destroy'), user_medicine_notebook_record_path(@user,@medicine_notebook_record), method: :delete, data: { confirm: I18n.t('message.medicine_notebook_record.confirmation_of_destruction') } %><br>
 
 <%= render partial: "shared/notification", locals: { user: @user } %>
 
-<%= link_to t('button.medicine_notebook_record_index'), user_medicine_notebook_records_path(@user) %>
+<br>
+<%= link_to t('button.medicine_notebook_record_index'), user_medicine_notebook_records_path(@user) %><br>
