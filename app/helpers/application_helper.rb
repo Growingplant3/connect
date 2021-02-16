@@ -142,6 +142,12 @@ module ApplicationHelper
     end
   end
 
+  def pharmacy_button_in_medicine_notebook_records_show(user,medicine_notebook_record)
+    if pharmacy_signed_in?
+      render partial: "shared/pharmacy_button_in_medicine_notebook_records_show", locals: { user: user, medicine_notebook_record: medicine_notebook_record }
+    end
+  end
+
   def pharmacy_button_in_medicine_notebook_records_index(user)
     if pharmacy_signed_in?
       render partial: "shared/pharmacy_button_in_medicine_notebook_records_index", locals: { user: user }
