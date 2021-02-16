@@ -30,4 +30,18 @@ class HomesController < ApplicationController
     flash[:notice] = I18n.t('message.sample_pharmacy_login')
     redirect_to pharmacy
   end
+
+  def developer
+    developer = User.find_by_email("developer@gmail.com")
+    flash[:notice] = I18n.t('message.developer_login')
+    sign_in developer
+    redirect_to medicines_path
+  end
+
+  def admin
+    admin = User.find_by_email("admin@gmail.com")
+    flash[:notice] = I18n.t('message.admin_login')
+    sign_in admin
+    redirect_to medicines_path
+  end
 end
