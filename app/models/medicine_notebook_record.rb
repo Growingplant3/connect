@@ -4,6 +4,7 @@ class MedicineNotebookRecord < ApplicationRecord
   belongs_to :user
   belongs_to :pharmacy
   validates :date_of_issue, :date_of_dispensing, :medical_institution_name, :doctor_name, presence: true
+  validates_associated :prescription_details
   validate :should_be_past
   scope :descending_order, -> { order(date_of_issue: "desc") }
 
