@@ -21,8 +21,7 @@ class MedicineNotebookRecordsController < ApplicationController
       redirect_to user_medicine_notebook_records_path(@user)
     else
       flash.now[:notice] = I18n.t('message.medicine_notebook_record.create_failure')
-      # 保留
-      render new_user_medicine_notebook_record_path(@user)
+      render :new
     end
   end
 
@@ -38,8 +37,7 @@ class MedicineNotebookRecordsController < ApplicationController
       redirect_to user_medicine_notebook_record_path(@user)
     else
       flash.now[:notice] = I18n.t('message.medicine_notebook_record.update_failure')
-      # 保留
-      render edit_medicine_notebook_record_path(@user, @medicine_notebook_record)
+      render :edit
     end
   end
 
