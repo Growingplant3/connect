@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_021133) do
+ActiveRecord::Schema.define(version: 2021_02_16_061938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 2021_02_15_021133) do
   create_table "medicine_notebook_records", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "pharmacy_id"
-    t.date "date_of_issue"
-    t.date "date_of_dispensing"
-    t.string "medical_institution_name"
-    t.string "doctor_name"
+    t.date "date_of_issue", null: false
+    t.date "date_of_dispensing", null: false
+    t.string "medical_institution_name", null: false
+    t.string "doctor_name", null: false
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,6 +73,17 @@ ActiveRecord::Schema.define(version: 2021_02_15_021133) do
     t.index ["name"], name: "index_pharmacies_on_name"
     t.index ["normal_telephone_number"], name: "index_pharmacies_on_normal_telephone_number"
     t.index ["reset_password_token"], name: "index_pharmacies_on_reset_password_token", unique: true
+  end
+
+  create_table "prescription_details", force: :cascade do |t|
+    t.bigint "medicine_notebook_record_id"
+    t.integer "prescription_days", null: false
+    t.integer "times", null: false
+    t.float "daily_dose", null: false
+    t.string "number_of_dose", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medicine_notebook_record_id"], name: "index_prescription_details_on_medicine_notebook_record_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,4 +117,5 @@ ActiveRecord::Schema.define(version: 2021_02_15_021133) do
   add_foreign_key "activities", "pharmacies"
   add_foreign_key "medicine_notebook_records", "pharmacies"
   add_foreign_key "medicine_notebook_records", "users"
+  add_foreign_key "prescription_details", "medicine_notebook_records"
 end
