@@ -10,6 +10,7 @@ ja:
         only_myself: 他人のデータの編集・削除などはできません。
         myself_or_pharmacies: 他人のデータの参照はできません。
         only_users: 薬局をログアウトした際にお使い頂けます。
+        reference_only: 参照のみ可能です。
       pharmacy:
         continue_edit: 続けて薬局情報を設定してください。
         all_pharmacies: ユーザー検索は薬局のみ実施可能です。

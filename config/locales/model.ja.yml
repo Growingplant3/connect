@@ -31,6 +31,17 @@ ja:
         business: 営業中
         opening_time: 開局時間
         closing_time: 閉局時間
+      medicine_notebook_record:
+        date_of_issue: 処方箋発行日
+        date_of_dispensing: 処方箋調剤日
+        medical_institution_name: 医療機関名
+        doctor_name: 保険医師名
+        note: 備考
+        index: 
+          date_of_issue: "処方箋発行日: %{date_of_issue}"
+          medical_institution_name: "医療機関名: %{medical_institution_name}"
+          note: "備考: %{note}"
+          nothing: 現在処方内容記録は何もありません
     title:
       user:
         show: ユーザー情報を確認中
@@ -42,6 +53,12 @@ ja:
         edit: 薬局情報を編集中
         search: 薬局検索
         index: 薬局一覧
+      medicine_notebook_record:
+        index: "%{user_name}さんの処方内容記録一覧"
+        new: "%{user_name}さんの処方内容記録作成"
+        show: "%{user_name}さんの処方内容記録を参照中"
+        edit: "%{user_name}さんの処方内容記録を編集中"
+        notification: 確認事項
   button:
     sign_out: ログアウト
     user_show: ユーザー情報確認
@@ -55,6 +72,10 @@ ja:
     information_disclosure_destroy: この薬局への情報公開を中止する
     sample_user: サンプルユーザーでログインする
     sample_pharmacy: サンプル薬局でログインする
+    medicine_notebook_record_index: 処方内容一覧を参照する
+    medicine_notebook_record_create: 処方内容記録を作成する
+    medicine_notebook_record_show: 詳細を確認する
+    transition_from_medicine_notebook_record_to_users_show: "%{user_name}さんのページへ移動する"
   message:
     narrow_down: 検索条件を設定し、50件以下に絞り込みを行ってください
     great_number_of_likes: "%{count}件のいいねを獲得しており、多くのユーザーから支持されています！"
@@ -66,6 +87,13 @@ ja:
     check_again: 情報公開することにより、この薬局がユーザー検索機能によってあなたを検索することができるようになりますが、本当によろしいですか？
     sample_user_login: サンプルユーザーでログインしました
     sample_pharmacy_login: サンプル薬局でログインしました
+    medicine_notebook_record:
+      create_success: 処方内容記録を作成しました
+      create_failure: 処方内容記録を作成できません
+      update_success: 処方内容記録を更新しました
+      update_failure: 処方内容記録を更新できません
+      destroy_success: 処方内容記録を削除しました
+      confirmation_of_destruction: 削除すると元に戻せませんがよろしいですか？
   enums:
     user:
       sex:

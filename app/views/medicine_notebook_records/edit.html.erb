@@ -1,0 +1,6 @@
+<h1><%= t('activerecord.title.medicine_notebook_record.edit', user_name: @user.name) %></h1>
+<hr>
+
+<%= render partial: "shared/notification", locals: { user: @user } %>
+<br>
+<%= render partial: "form", locals: { medicine_notebook_record: @medicine_notebook_record, user: @user } %>

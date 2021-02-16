@@ -10,8 +10,11 @@
   </head>
 
   <body>
-    <%= params %><br>
-    <%= session.keys %><br>
+    <% if Rails.env == "development" %>
+      <%= params %><br>
+      <%= session.keys %><br>
+    <% end %>
+
     <!-- header -->
     <header style="text-align: center;background-color: red; height: 50px;">
       <%= link_to t('app.title'), root_path %>

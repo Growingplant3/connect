@@ -16,5 +16,5 @@
   <%= t('activerecord.attributes.user.note') %>:<%= @user.note %><br>
 </p>
 
-<%= link_to I18n.t('button.user_edit'), edit_user_path(@user) %><br>
-<%= link_to I18n.t('button.destroy'), @user, method: :delete, data: { confirm: I18n.t('devise.registrations.edit.are_you_sure') } %>
+<%= user_button_in_users_show(@user) %>
+<%= pharmacy_or_current_user_button_in_users_show(@user) %>

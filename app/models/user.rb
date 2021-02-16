@@ -6,6 +6,7 @@ class User < ApplicationRecord
   before_validation :before_save, on: :update
   has_many :likes, dependent: :destroy
   has_many :information_disclosures, dependent: :destroy
+  has_many :medicine_notebook_records, dependent: :destroy
   validates :name, presence: true
   validates :postcode, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }, allow_blank: true
   validates :telephone_number, format: { with: /\A[0-9]+\z/ }, length: { in: 10..11 }, allow_blank: true
@@ -25,7 +26,7 @@ class User < ApplicationRecord
 
   def should_be_past
     if birthday.present? && birthday > Date.current
-      errors.add(:birthday, I18n.t('errors.messages.should_be_past'))
+      errors.add(:birthday, I18n.t('errors.messages.birthday_should_be_past'))
     end
   end
 

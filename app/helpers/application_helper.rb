@@ -103,4 +103,54 @@ module ApplicationHelper
       link_to t('button.sample_pharmacy'), homes_sample_pharmacy_sign_in_path, method: :post
     end
   end
+
+  def create_or_update_root
+    case action_name
+    when "new" || "create"
+      user_medicine_notebook_records_path(params[:user_id])
+    when "edit" || "update"
+      user_medicine_notebook_record_path(params[:user_id], params[:id])
+    end
+  end
+
+  def action_name_button
+    case action_name
+    when "new" || "create"
+      I18n.t('helpers.submit.create')
+    when "edit" || "update"
+      I18n.t('helpers.submit.update')
+    end
+  end
+
+  def user_button_in_users_show(user)
+    if user == current_user
+      render partial: "shared/user_button_in_users_show", locals: { user: user }
+    end
+  end
+
+  def pharmacy_or_current_user_button_in_users_show(user)
+    if pharmacy_signed_in?
+      render partial: "shared/pharmacy_button_in_users_show", locals: { user: user }
+    elsif user == current_user
+      render partial: "shared/current_user_button_in_users_show", locals: { user: user }
+    end
+  end
+
+  def nothing_medicine_notebook_record(medicine_notebook_record)
+    if medicine_notebook_record.blank?
+      I18n.t('activerecord.attributes.medicine_notebook_record.index.nothing')
+    end
+  end
+
+  def pharmacy_button_in_medicine_notebook_records_show(user,medicine_notebook_record)
+    if pharmacy_signed_in?
+      render partial: "shared/pharmacy_button_in_medicine_notebook_records_show", locals: { user: user, medicine_notebook_record: medicine_notebook_record }
+    end
+  end
+
+  def pharmacy_button_in_medicine_notebook_records_index(user)
+    if pharmacy_signed_in?
+      render partial: "shared/pharmacy_button_in_medicine_notebook_records_index", locals: { user: user }
+    end
+  end
 end
