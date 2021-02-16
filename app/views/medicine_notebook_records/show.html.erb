@@ -7,8 +7,7 @@
 <%= t('activerecord.attributes.medicine_notebook_record.doctor_name') %>:<%= @medicine_notebook_record.doctor_name %><br>
 <%= t('activerecord.attributes.medicine_notebook_record.note') %>:<%= @medicine_notebook_record.note %><br>
 <br>
-<%= link_to t('helpers.submit.update'), edit_user_medicine_notebook_record_path(@user,@medicine_notebook_record) %><br>
-<%= link_to t('helpers.submit.destroy'), user_medicine_notebook_record_path(@user,@medicine_notebook_record), method: :delete, data: { confirm: I18n.t('message.medicine_notebook_record.confirmation_of_destruction') } %><br>
+<%= pharmacy_button_in_medicine_notebook_records_show(@user,@medicine_notebook_record) %>
 
 <%= render partial: "shared/notification", locals: { user: @user } %>
 
