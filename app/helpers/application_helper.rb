@@ -104,12 +104,26 @@ module ApplicationHelper
     end
   end
 
+  def developer_login
+    unless user_signed_in? || pharmacy_signed_in?
+      link_to t('button.developer'), homes_developer_sign_in_path, method: :post
+    end
+  end
+
+  def admin_login
+    unless user_signed_in? || pharmacy_signed_in?
+      link_to t('button.admin'), homes_admin_sign_in_path, method: :post
+    end
+  end
+
   def create_or_update_root
     case action_name
     when "new","create"
-      user_medicine_notebook_records_path(params[:user_id])
+      user_medicine_notebook_records_path(params[:user_id]) if params[:controller] == "medicine_notebook_records"
+      medicines_path if params[:controller] == "medicines"
     when "edit","update"
-      user_medicine_notebook_record_path(params[:user_id], params[:id])
+      user_medicine_notebook_record_path(params[:user_id], params[:id]) if params[:controller] == "medicine_notebook_records"
+      medicine_path if params[:controller] == "medicines"
     end
   end
 
