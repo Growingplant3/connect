@@ -10,8 +10,7 @@
     <%= t('activerecord.attributes.medicine_notebook_record.index.date_of_issue', date_of_issue: record.date_of_issue) %><br>
     <%= t('activerecord.attributes.medicine_notebook_record.index.medical_institution_name', medical_institution_name: record.medical_institution_name) %><br>
     <%= t('activerecord.attributes.medicine_notebook_record.index.note', note: record.note) %><br>
-    <%= link_to t('button.medicine_notebook_record_show'), user_medicine_notebook_record_path(@user, record.id) %>
-    <%= "更新" %>
-    <%= "削除" %>
+    <%= link_to t('button.medicine_notebook_record_show'), user_medicine_notebook_record_path(@user, record.id) %><br>
+    <br>
   </div>
 <% end %>
