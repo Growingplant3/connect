@@ -1,4 +1,6 @@
 class MedicineNotebookRecord < ApplicationRecord
+  has_many :prescription_details, dependent: :destroy
+  accepts_nested_attributes_for :prescription_details, allow_destroy: true
   belongs_to :user
   belongs_to :pharmacy
   validates :date_of_issue, :date_of_dispensing, :medical_institution_name, :doctor_name, presence: true
