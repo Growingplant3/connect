@@ -57,6 +57,7 @@ ja:
         index: "%{user_name}さんの処方内容記録一覧"
         new: "%{user_name}さんの処方内容記録作成"
         show: "%{user_name}さんの処方内容記録を参照中"
+        edit: "%{user_name}さんの処方内容記録を編集中"
         notification: 確認事項
   button:
     sign_out: ログアウト
@@ -92,6 +93,7 @@ ja:
       update_success: 処方内容記録を更新しました
       update_failure: 処方内容記録を更新できません
       destroy_success: 処方内容記録を削除しました
+      confirmation_of_destruction: 削除すると元に戻せませんがよろしいですか？
   enums:
     user:
       sex:
