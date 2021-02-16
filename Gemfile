@@ -24,6 +24,9 @@ gem 'devise-i18n'
 gem 'enum_help'
 # search
 gem 'ransack'
+# dynamic form
+gem 'simple_form'
+gem 'cocoon'
 
 group :development, :test do
   # Debug

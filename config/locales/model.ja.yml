@@ -42,6 +42,17 @@ ja:
           medical_institution_name: "医療機関名: %{medical_institution_name}"
           note: "備考: %{note}"
           nothing: 現在処方内容記録は何もありません
+      prescription_detail:
+        prescription_days: 処方日数
+        times: 服用回数
+        daily_dose: 1日量
+        number_of_dose: 1回量
+        show:
+          numbering: "処方%{index}"
+          prescription_days: "処方日数: %{prescription_days}日分"
+          times: "服用回数: %{times}回"
+          daily_dose: "1日量: %{daily_dose}錠"
+          number_of_dose: "1回量: %{number_of_dose}"
     title:
       user:
         show: ユーザー情報を確認中

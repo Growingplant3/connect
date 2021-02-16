@@ -1,0 +1,62 @@
+<%#= form_with(model: medicine_notebook_record, local: true, url: create_or_update_root ) do |f| %>
+<%= simple_form_for medicine_notebook_record, url: create_or_update_root do |f| %>
+  <div>
+    <%#= f.label :date_of_issue %>
+    <%= f.input :date_of_issue %>
+  </div>
+
+  <div>
+    <%#= f.label :date_of_dispensing %>
+    <%#= f.date_field :date_of_dispensing %>
+  </div>
+
+  <div>
+    <%#= f.label :medical_institution_name %>
+    <%#= f.text_field :medical_institution_name %>
+  </div>
+
+  <div>
+    <%#= f.label :doctor_name %>
+    <%#= f.text_field :doctor_name %>
+  </div>
+
+  <div>
+    <%#= f.label :note %>
+    <%#= f.text_field :note %>
+  </div>
+
+  <div>
+    <%= f.simple_fields_for :prescription_details do |detail| %>
+      <%= render 'detail_form', f: detail %>
+    <% end %>
+    <div>
+      <%= link_to_add_association '追加ボタン', f, :prescription_details %>
+    </div>
+  </div>
+
+  <%= f.submit action_name_button %>
+<% end %>
+
+<div>
+  <div>
+    <%= f.label :prescription_days %>
+    <%= f.input :prescription_days %>
+  </div>
+
+  <div>
+    <%#= f.label :times %>
+    <%#= f.text_field :times %>
+  </div>
+
+  <div>
+    <%#= f.label :daily_dose %>
+    <%#= f.text_field :daily_dose %>
+  </div>
+
+  <div>
+    <%#= f.label :number_of_dose %>
+    <%#= f.text_field :number_of_dose %>
+  </div>
+
+  <%= link_to_remove_association "削除ボタン", f %>
+</div>
