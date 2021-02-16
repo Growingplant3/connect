@@ -3,7 +3,7 @@ class MedicineNotebookRecordsController < ApplicationController
   before_action :set_user
 
   def index
-    @medicine_notebook_records = @user.medicine_notebook_records.order(date_of_issue: "desc")
+    @medicine_notebook_records = @user.medicine_notebook_records.descending_order
   end
 
   def new
@@ -18,7 +18,8 @@ class MedicineNotebookRecordsController < ApplicationController
       redirect_to user_medicine_notebook_records_path(@user)
     else
       flash.now[:notice] = I18n.t('message.medicine_notebook_record.create_failure')
-      render :new
+      # 保留
+      render new_user_medicine_notebook_record_path(@user)
     end
   end
 
@@ -31,10 +32,11 @@ class MedicineNotebookRecordsController < ApplicationController
   def update
     if @medicine_notebook_record.update(medicine_notebook_record_params)
       flash[:notice] = I18n.t('message.medicine_notebook_record.update_success')
-      redirect_to @medicine_notebook_record
+      redirect_to user_medicine_notebook_record_path(@user)
     else
       flash.now[:notice] = I18n.t('message.medicine_notebook_record.update_failure')
-      render :edit
+      # 保留
+      render edit_medicine_notebook_record_path(@user, @medicine_notebook_record)
     end
   end
 
