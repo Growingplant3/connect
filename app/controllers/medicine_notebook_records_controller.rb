@@ -1,6 +1,8 @@
 class MedicineNotebookRecordsController < ApplicationController
   before_action :set_medicine_notebook_record, only: %i[show edit update destroy]
   before_action :set_user
+  before_action :current_user_or_pharmacies
+  before_action :reference_only, except: %i[index show]
 
   def index
     @medicine_notebook_records = @user.medicine_notebook_records.descending_order
@@ -58,5 +60,19 @@ class MedicineNotebookRecordsController < ApplicationController
 
   def set_user
     @user = User.find(params[:user_id])
+  end
+
+  def current_user_or_pharmacies
+    unless @user == current_user || pharmacy_signed_in?
+      flash[:alert] = I18n.t('flash.alert.user.only_myself')
+      redirect_to root_path
+    end
+  end
+
+  def reference_only
+    unless pharmacy_signed_in?
+      flash[:alert] = I18n.t('flash.alert.user.reference_only')
+      redirect_to root_path
+    end
   end
 end
