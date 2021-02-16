@@ -106,12 +106,10 @@ module ApplicationHelper
 
   def create_or_update_root
     case action_name
-    when "create"
-      new_user_medicine_notebook_record_path(params[:user_id])
-    when "new"
+    when "new" || "create"
       user_medicine_notebook_records_path(params[:user_id])
-    # when "edit" || "update"
-    #   edit_user_medicine_notebook_record_path(params[:user_id])
+    when "edit" || "update"
+      user_medicine_notebook_record_path(params[:user_id], params[:id])
     end
   end
 
