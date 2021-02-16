@@ -1,0 +1,2 @@
+<%= link_to t('helpers.submit.update'), edit_user_medicine_notebook_record_path(user,medicine_notebook_record) %><br>
+<%= link_to t('helpers.submit.destroy'), user_medicine_notebook_record_path(user,medicine_notebook_record), method: :delete, data: { confirm: I18n.t('message.medicine_notebook_record.confirmation_of_destruction') } %><br>
