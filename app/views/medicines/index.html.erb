@@ -4,8 +4,8 @@
 
 <% @medicines.each do |medicine| %>
   <div>
-    <%= medicine.name %>:<%= "#{medicine.standard}#{medicine.unit}" %><br>
-    <%= t('activerecord.attributes.medicine.permission') %>:<%= medicine.permission_i18n %><br>
+    <%= link_to "#{medicine.name} #{medicine.standard}#{medicine.unit}", medicine_path(medicine) %><br>
+    <%= t('activerecord.attributes.medicine.permission') %> <%= medicine.permission_i18n %><br>
   </div>
   <hr>
 <% end %>
