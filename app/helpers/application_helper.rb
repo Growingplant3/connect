@@ -126,11 +126,13 @@ module ApplicationHelper
   def create_or_update_root
     case action_name
     when "new","create"
+      user_medicine_notebook_record_prescription_details_path(params[:user_id], params[:medicine_notebook_record_id]) if controller_name == "prescription_details"
       user_medicine_notebook_records_path(params[:user_id]) if controller_name == "medicine_notebook_records"
-      medicines_path if params[:controller] == "medicines"
+      medicines_path if controller_name == "medicines"
     when "edit","update"
+      user_medicine_notebook_record_prescription_detail_path(params[:user_id], params[:medicine_notebook_record_id], params[:id]) if controller_name == "prescription_details"
       user_medicine_notebook_record_path(params[:user_id], params[:id]) if controller_name == "medicine_notebook_records"
-      medicine_path if params[:controller] == "medicines"
+      medicine_path if controller_name == "medicines"
     end
   end
 
