@@ -19,6 +19,7 @@ ja:
         operation: 手術歴
         role: 役割
         note: 備考
+        registered_person: 登録者
       pharmacy:
         name: 薬局名
         postcode: 郵便番号
@@ -53,6 +54,11 @@ ja:
           times: "服用回数: %{times}回"
           daily_dose: "1日量: %{daily_dose}錠"
           number_of_dose: "1回量: %{number_of_dose}"
+      medicine:
+        name: 医薬品名
+        standard: 規格
+        unit: 単位
+        permission: 採用状態
     title:
       user:
         show: ユーザー情報を確認中
@@ -70,6 +76,10 @@ ja:
         show: "%{user_name}さんの処方内容記録を参照中"
         edit: "%{user_name}さんの処方内容記録を編集中"
         notification: 確認事項
+      medicine:
+        index: 登録医薬品一覧
+        new: 医薬品登録
+        show: 医薬品詳細
   button:
     sign_out: ログアウト
     user_show: ユーザー情報確認
@@ -83,10 +93,16 @@ ja:
     information_disclosure_destroy: この薬局への情報公開を中止する
     sample_user: サンプルユーザーでログインする
     sample_pharmacy: サンプル薬局でログインする
+    developer: 開発者でログインする
+    admin: 管理者でログインする
     medicine_notebook_record_index: 処方内容一覧を参照する
     medicine_notebook_record_create: 処方内容記録を作成する
     medicine_notebook_record_show: 詳細を確認する
     transition_from_medicine_notebook_record_to_users_show: "%{user_name}さんのページへ移動する"
+    medicine_index: 登録医薬品一覧へ移動
+    medicine_new: 医薬品登録へ移動
+    medicine_update: この医薬品の採用を許可する
+    medicine_destroy: この医薬品の登録を削除する
   message:
     narrow_down: 検索条件を設定し、50件以下に絞り込みを行ってください
     great_number_of_likes: "%{count}件のいいねを獲得しており、多くのユーザーから支持されています！"
@@ -98,6 +114,8 @@ ja:
     check_again: 情報公開することにより、この薬局がユーザー検索機能によってあなたを検索することができるようになりますが、本当によろしいですか？
     sample_user_login: サンプルユーザーでログインしました
     sample_pharmacy_login: サンプル薬局でログインしました
+    developer_login: 開発者でログインしました
+    admin_login: 管理者でログインしました
     medicine_notebook_record:
       create_success: 処方内容記録を作成しました
       create_failure: 処方内容記録を作成できません
@@ -105,6 +123,15 @@ ja:
       update_failure: 処方内容記録を更新できません
       destroy_success: 処方内容記録を削除しました
       confirmation_of_destruction: 削除すると元に戻せませんがよろしいですか？
+    medicine:
+      create_success: 医薬品を登録しました
+      create_failure: 医薬品登録できませんでした
+      special_authority: 特別な権限が必要です
+      only_admin: 管理者のみ利用可能です
+      update_confirm: 医薬品を登録するとお薬手帳記録で使用可能状態になりますが、本当によろしいですか？
+      update_success: 医薬品登録が完了しました
+      destroy_confirm: 医薬品を削除するとお薬手帳記録で整合性が取れなくなる可能性がありますが、本当によろしいですか？
+      destroy_success: "%{medicine_name}の登録を削除しました"
   enums:
     user:
       sex:
@@ -127,3 +154,10 @@ ja:
         friday: 金曜日
         saturday: 土曜日
         sunday: 日曜日
+    medicine:
+      unit:
+        mg: mg
+        μg: μg
+      permission:
+        permit: 許可
+        unpermit: 不許可

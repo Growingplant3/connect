@@ -53,6 +53,13 @@ module ApplicationHelper
     end      
   end
 
+  def developer_button
+    return unless user_signed_in?
+    if current_user.role == "developer" || current_user.role == "master"
+      link_to t('button.medicine_index'), medicines_path
+    end
+  end
+
   def from_start_to_finish(activity)
     return if activity.business == "false" || activity.opening_time.blank? || activity.closing_time.blank?
     open = activity.opening_time.strftime("%R")
@@ -104,12 +111,26 @@ module ApplicationHelper
     end
   end
 
+  def developer_login
+    unless user_signed_in? || pharmacy_signed_in?
+      link_to t('button.developer'), homes_developer_sign_in_path, method: :post
+    end
+  end
+
+  def admin_login
+    unless user_signed_in? || pharmacy_signed_in?
+      link_to t('button.admin'), homes_admin_sign_in_path, method: :post
+    end
+  end
+
   def create_or_update_root
     case action_name
-    when "new" || "create"
-      user_medicine_notebook_records_path(params[:user_id])
-    when "edit" || "update"
-      user_medicine_notebook_record_path(params[:user_id], params[:id])
+    when "new","create"
+      user_medicine_notebook_records_path(params[:user_id]) if controller_name == "medicine_notebook_records"
+      medicines_path if params[:controller] == "medicines"
+    when "edit","update"
+      user_medicine_notebook_record_path(params[:user_id], params[:id]) if controller_name == "medicine_notebook_records"
+      medicine_path if params[:controller] == "medicines"
     end
   end
 
@@ -151,6 +172,12 @@ module ApplicationHelper
   def pharmacy_button_in_medicine_notebook_records_index(user)
     if pharmacy_signed_in?
       render partial: "shared/pharmacy_button_in_medicine_notebook_records_index", locals: { user: user }
+    end
+  end
+  
+  def pharmacy_button_in_medicine_show(current_user,medicine)
+    if current_user.role == "master"
+      render partial: "button", locals: { medicine: medicine }
     end
   end
 end

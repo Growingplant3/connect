@@ -1,0 +1,33 @@
+<h1><%= t('activerecord.title.medicine.new') %></h1>
+
+<% if @medicine.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h2><%= pluralize(@medicine.errors.count, t('errors.messages.can_not_create_because_have_any_error')) %></h2>
+    <ul>
+      <% @medicine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @medicine, local: true, url: create_or_update_root) do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :standard %>
+    <%= f.text_field :standard %>
+  </div>
+
+  <div>
+    <%= f.label :unit %>
+    <%= f.select :unit, Medicine.units_i18n %>
+  </div>
+
+  <%= f.submit action_name_button %>
+<% end %>
+
+<%= link_to t('button.medicine_index'), medicines_path %>

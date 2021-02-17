@@ -1,0 +1,11 @@
+<h1><%= t('activerecord.title.medicine.index') %></h1>
+<%= link_to t('button.medicine_new'), new_medicine_path %>
+<hr>
+
+<% @medicines.each do |medicine| %>
+  <div>
+    <%= link_to "#{medicine.name} #{medicine.standard}#{medicine.unit}", medicine_path(medicine) %><br>
+    <%= t('activerecord.attributes.medicine.permission') %> <%= medicine.permission_i18n %><br>
+  </div>
+  <hr>
+<% end %>
