@@ -155,6 +155,9 @@ ja:
         saturday: 土曜日
         sunday: 日曜日
     medicine:
+      unit:
+        mg: mg
+        μg: μg
       permission:
         permit: 許可
         unpermit: 不許可
