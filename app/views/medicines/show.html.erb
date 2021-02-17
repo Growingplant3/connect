@@ -1,0 +1,11 @@
+<h1><%= t('activerecord.title.medicine.show') %></h1>
+
+<%= t('activerecord.attributes.medicine.name') %> <%= @medicine.name %><br>
+<%= t('activerecord.attributes.medicine.standard') %> <%= @medicine.standard %><br>
+<%= t('activerecord.attributes.medicine.unit') %> <%= @medicine.unit %><br>
+<%= t('activerecord.attributes.medicine.permission') %> <%= @medicine.permission_i18n %><br>
+<%= t('activerecord.attributes.user.registered_person') %> <%= @medicine.user.name %><br>
+
+<%= link_to t('button.medicine_index'), medicines_path %>
+<br>
+<%= pharmacy_button_in_medicine_show(current_user,@medicine) %>
