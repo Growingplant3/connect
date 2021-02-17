@@ -10,15 +10,11 @@ class MedicineNotebookRecordsController < ApplicationController
 
   def new
     @medicine_notebook_record = @user.medicine_notebook_records.build
-    prescription_detail = @medicine_notebook_record.prescription_details.build
-    prescription_detail.medicine_record_relations.build
-    # @medicine_choices = Medicine.choices
   end
 
   def create
     @medicine_notebook_record = @user.medicine_notebook_records.build(medicine_notebook_record_params)
-    # @medicine_notebook_record.pharmacy_id = current_pharmacy.id
-    MedicineNotebookRecord.arrange_create(params,@medicine_notebook_record,current_pharmacy)
+    @medicine_notebook_record.pharmacy_id = current_pharmacy.id
     if @medicine_notebook_record.save
       flash[:notice] = I18n.t('message.medicine_notebook_record.create_success')
       redirect_to user_medicine_notebook_records_path(@user)
@@ -53,11 +49,7 @@ class MedicineNotebookRecordsController < ApplicationController
   private
 
   def medicine_notebook_record_params
-    params.require(:medicine_notebook_record).permit(:date_of_issue, :date_of_dispensing, :medical_institution_name, :doctor_name, :note,
-      prescription_details_attributes: [:id, :prescription_days, :times, :daily_dose, :number_of_dose, :_destroy,
-        medicine_record_relations_attributes: [:id, :_destroy]
-      ]
-    ).merge(pharmacy_id: current_pharmacy.id)
+    params.require(:medicine_notebook_record).permit(:date_of_issue, :date_of_dispensing, :medical_institution_name, :doctor_name, :note)
   end
 
   def set_medicine_notebook_record
