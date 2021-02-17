@@ -40,6 +40,14 @@
   <!-- child -->
     <div>
       <%= f.fields_for :prescription_details do |f| %>
+        <!-- grandson -->
+        <div>
+          <%= f.fields_for :medicine_record_relations do |f| %>
+            <%= f.label :name %>
+            <%= f.select :medicine_id, @medicine_choices %>
+          <% end %>
+        </div>
+        <!-- grandson -->
         <div>
           <%= f.label :prescription_days %>
           <%= f.text_field :prescription_days %>
