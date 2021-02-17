@@ -1,0 +1,47 @@
+<%= render partial: "shared/record_summary", locals: { medicine_notebook_record: @medicine_notebook_record } %>
+
+<% if @prescription_detail.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h2><%= pluralize(@prescription_detail.errors.count, t('errors.messages.can_not_create_because_have_any_error')) %></h2>
+    <ul>
+      <% @prescription_detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: [@user, @medicine_notebook_record, @prescription_detail], local: true, url: create_or_update_root ) do |f| %>
+  <div>
+    <%= f.fields_for :medicine_record_relations do |f| %>      
+      <div>
+        <%= f.label t('activerecord.attributes.medicine.name') %>
+        <%= f.select :medicine_id, Medicine.choices %>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.label :prescription_days %>
+      <%= f.text_field :prescription_days %>
+    </div>
+
+    <div>
+      <%= f.label :times %>
+      <%= f.text_field :times %>
+    </div>
+
+    <div>
+      <%= f.label :daily_dose %>
+      <%= f.text_field :daily_dose %>
+    </div>
+
+    <div>
+      <%= f.label :number_of_dose %>
+      <%= f.text_field :number_of_dose %>
+    </div>
+  </div>
+
+  <%= f.submit action_name_button %>
+<% end %>
+
+<%= link_to t('button.medicine_notebook_record_index'), user_medicine_notebook_record_path(@user,@medicine_notebook_record) %>
