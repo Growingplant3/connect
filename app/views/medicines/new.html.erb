@@ -24,7 +24,7 @@
 
   <div>
     <%= f.label :unit %>
-    <%= f.text_field :unit %>
+    <%= f.select :unit, Medicine.units_i18n %>
   </div>
 
   <%= f.submit action_name_button %>
