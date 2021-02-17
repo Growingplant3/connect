@@ -1,7 +1,7 @@
 class MedicinesController < ApplicationController
   before_action :developer_privileges
-  # before_action :master_privileges
-  before_action :set_medicine, only: %i[edit update destroy]
+  before_action :master_privileges, only: %i[update destroy]
+  before_action :set_medicine, only: %i[show update destroy]
 
   def index
     @medicines = Medicine.authority_category(current_user)
@@ -21,6 +21,22 @@ class MedicinesController < ApplicationController
       flash[:notice] = I18n.t('message.medicine.create_failure')
       render :new
     end
+  end
+
+  def show
+  end
+
+  def update
+    @medicine.update(permission: "permit")
+    flash[:notice] = I18n.t('message.medicine.update_success')
+    redirect_to @medicine
+  end
+
+  def destroy
+    medicine_name = @medicine.name
+    @medicine.destroy
+    flash[:notice] = I18n.t('message.medicine.destroy_success', medicine_name: medicine_name )
+    redirect_to medicines_path
   end
 
   private
