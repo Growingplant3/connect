@@ -54,6 +54,7 @@ ja:
           times: "服用回数: %{times}回"
           daily_dose: "1日量: %{daily_dose}錠"
           number_of_dose: "1回量: %{number_of_dose}"
+          arranged_format: "1日%{daily_dose}錠 1日%{times}回  [%{number_of_dose}] %{days}日分"
       medicine:
         name: 医薬品名
         standard: 規格
@@ -76,6 +77,9 @@ ja:
         show: "%{user_name}さんの処方内容記録を参照中"
         edit: "%{user_name}さんの処方内容記録を編集中"
         notification: 確認事項
+      prescription_detail:
+        new: "%{user_name}さんの処方詳細を作成"
+        edit: "%{user_name}さんの処方詳細を編集中"
       medicine:
         index: 登録医薬品一覧
         new: 医薬品登録
@@ -103,6 +107,7 @@ ja:
     medicine_new: 医薬品登録へ移動
     medicine_update: この医薬品の採用を許可する
     medicine_destroy: この医薬品の登録を削除する
+    prescription_detail_new: 処方薬を登録する
   message:
     narrow_down: 検索条件を設定し、50件以下に絞り込みを行ってください
     great_number_of_likes: "%{count}件のいいねを獲得しており、多くのユーザーから支持されています！"
@@ -123,6 +128,9 @@ ja:
       update_failure: 処方内容記録を更新できません
       destroy_success: 処方内容記録を削除しました
       confirmation_of_destruction: 削除すると元に戻せませんがよろしいですか？
+    prescription_detail:
+      create_success: 処方内容詳細を作成しました
+      create_failure: 処方内容詳細を作成できません
     medicine:
       create_success: 医薬品を登録しました
       create_failure: 医薬品登録できませんでした
