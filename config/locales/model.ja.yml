@@ -19,6 +19,7 @@ ja:
         operation: 手術歴
         role: 役割
         note: 備考
+        registered_person: 登録者
       pharmacy:
         name: 薬局名
         postcode: 郵便番号
@@ -78,6 +79,7 @@ ja:
       medicine:
         index: 登録医薬品一覧
         new: 医薬品登録
+        show: 医薬品詳細
   button:
     sign_out: ログアウト
     user_show: ユーザー情報確認
@@ -99,6 +101,8 @@ ja:
     transition_from_medicine_notebook_record_to_users_show: "%{user_name}さんのページへ移動する"
     medicine_index: 登録医薬品一覧へ移動
     medicine_new: 医薬品登録へ移動
+    medicine_update: この医薬品の採用を許可する
+    medicine_destroy: この医薬品の登録を削除する
   message:
     narrow_down: 検索条件を設定し、50件以下に絞り込みを行ってください
     great_number_of_likes: "%{count}件のいいねを獲得しており、多くのユーザーから支持されています！"
@@ -124,6 +128,10 @@ ja:
       create_failure: 医薬品登録できませんでした
       special_authority: 特別な権限が必要です
       only_admin: 管理者のみ利用可能です
+      update_confirm: 医薬品を登録するとお薬手帳記録で使用可能状態になりますが、本当によろしいですか？
+      update_success: 医薬品登録が完了しました
+      destroy_confirm: 医薬品を削除するとお薬手帳記録で整合性が取れなくなる可能性がありますが、本当によろしいですか？
+      destroy_success: "%{medicine_name}の登録を削除しました"
   enums:
     user:
       sex:
