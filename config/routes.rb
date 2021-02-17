@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   resources :users, except: %i[new create] do
-    resources :medicine_notebook_records
+    resources :medicine_notebook_records do
+      resources :prescription_details
+    end
   end
   devise_for :pharmacies, controllers: {
     registrations: 'pharmacies/registrations',
