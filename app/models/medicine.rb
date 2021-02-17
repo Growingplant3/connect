@@ -9,7 +9,7 @@ class Medicine < ApplicationRecord
     when "master"
       self.all
     when "developer"
-      self.all.where(user_id: current_user.id)
+      self.where(user_id: current_user.id)
     end
   end
 end
