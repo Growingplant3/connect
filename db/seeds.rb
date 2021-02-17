@@ -6,8 +6,8 @@ User.create(name: "菊池", email: "kikuchi@gmail.com", password: "password", po
 birthday: "1965-01-02".to_date, sex: 1, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
 User.create(name: "菊川", email: "kikukiku@gmail.com", password: "password", postcode: "8100031", address: "福岡県筑後市", telephone_number: "09213579086",
 birthday: nil, sex: 0, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
-User.create(name: "武○製薬の開発者", email: "developer@gmail.com", password: "password", role: 1)
-User.create(name: "塩○義製薬の開発者", email: "developer2@gmail.com", password: "password", role: 1)
+developer1 = User.create(name: "武○製薬の開発者", email: "developer@gmail.com", password: "password", role: 1)
+developer2 = User.create(name: "塩○義製薬の開発者", email: "developer2@gmail.com", password: "password", role: 1)
 User.create(name: "管理者", email: "admin@gmail.com", password: "password", role: 2)
 
 first_pharmacy = Pharmacy.create(name: "ひまわり薬局", email: "himawari@gmail.com", password: "password", postcode: "2720003", address: "千葉県市川市",
@@ -32,3 +32,8 @@ end
     InformationDisclosure.create(user_id: user_identification, pharmacy_id: pharmacy_identification)
   end
 end
+
+azilsartan_10_mg = Medicine.create(name: "アジルバ錠", standard: 10, unit: 0, permission: true, user_id: developer1.id)
+lansoprazole_od_15_mg = Medicine.create(name: "タケプロンOD錠", standard: 15, unit: 0, permission: true, user_id: developer1.id)
+alogliptin_25_mg = Medicine.create(name: "ネシーナ錠", standard: 25, unit: 0, user_id: developer1.id)
+baloxavir_marboxil_10_mg = Medicine.create(name: "ゾフルーザ錠", standard: 10, unit: 0, user_id: developer2.id)
