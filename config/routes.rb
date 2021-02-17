@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   resources :pharmacies, except: %i[new create]
   resources :likes, only: %i[create destroy]
   resources :information_disclosures, only: %i[create destroy]
-  resources :medicines
+  resources :medicines, except: [:edit]
 end
