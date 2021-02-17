@@ -53,6 +53,13 @@ module ApplicationHelper
     end      
   end
 
+  def developer_button
+    return unless user_signed_in?
+    if current_user.role == "developer" || current_user.role == "master"
+      link_to t('button.medicine_index'), medicines_path
+    end
+  end
+
   def from_start_to_finish(activity)
     return if activity.business == "false" || activity.opening_time.blank? || activity.closing_time.blank?
     open = activity.opening_time.strftime("%R")
