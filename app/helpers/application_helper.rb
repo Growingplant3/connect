@@ -119,10 +119,10 @@ module ApplicationHelper
   def create_or_update_root
     case action_name
     when "new","create"
-      user_medicine_notebook_records_path(params[:user_id]) if params[:controller] == "medicine_notebook_records"
+      user_medicine_notebook_records_path(params[:user_id]) if controller_name == "medicine_notebook_records"
       medicines_path if params[:controller] == "medicines"
     when "edit","update"
-      user_medicine_notebook_record_path(params[:user_id], params[:id]) if params[:controller] == "medicine_notebook_records"
+      user_medicine_notebook_record_path(params[:user_id], params[:id]) if controller_name == "medicine_notebook_records"
       medicine_path if params[:controller] == "medicines"
     end
   end
@@ -165,6 +165,12 @@ module ApplicationHelper
   def pharmacy_button_in_medicine_notebook_records_index(user)
     if pharmacy_signed_in?
       render partial: "shared/pharmacy_button_in_medicine_notebook_records_index", locals: { user: user }
+    end
+  end
+  
+  def pharmacy_button_in_medicine_show(current_user,medicine)
+    if current_user.role == "master"
+      render partial: "button", locals: { medicine: medicine }
     end
   end
 end
