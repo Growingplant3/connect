@@ -17,8 +17,7 @@ class Medicine < ApplicationRecord
   def self.choices
     hash = {}
     self.pluck(:name).zip(self.pluck(:id)) do |name, index|
-      symbol = name
-      hash[symbol] = index
+      hash[name] = index
     end
     hash
   end
