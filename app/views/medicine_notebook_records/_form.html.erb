@@ -11,7 +11,7 @@
 <% end %>
 
 <!-- parent -->
-<%= form_with(model: medicine_notebook_record, local: true, url: create_or_update_root ) do |f| %>
+<%= form_with(model: [user, medicine_notebook_record], local: true, url: create_or_update_root ) do |f| %>
   <div>
     <%= f.label :date_of_issue %>
     <%= f.date_field :date_of_issue %>
