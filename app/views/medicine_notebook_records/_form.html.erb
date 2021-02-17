@@ -10,7 +10,6 @@
   </div>
 <% end %>
 
-<!-- parent -->
 <%= form_with(model: [user, medicine_notebook_record], local: true, url: create_or_update_root ) do |f| %>
   <div>
     <%= f.label :date_of_issue %>
@@ -37,20 +36,7 @@
     <%= f.text_field :note %>
   </div>
 
-  <!-- child -->
-    <div id='prescription_details'>
-      <%= f.fields_for :prescription_details do |f| %>
-        <%= render 'prescription_detail_fields', f: f %>
-      <% end %>
-
-      <div class="links">
-        <%= link_to_add_association "子供を追加", f, :prescription_details %>
-      </div>
-    </div>
-  <!-- child -->
-
   <%= f.submit action_name_button %>
 <% end %>
-<!-- parent -->
 
 <%= link_to t('button.medicine_notebook_record_index'), user_medicine_notebook_records_path(user) %>
