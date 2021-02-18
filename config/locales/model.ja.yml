@@ -78,8 +78,8 @@ ja:
         edit: "%{user_name}さんの処方内容記録を編集中"
         notification: 確認事項
       prescription_detail:
-        new: "%{user_name}さんの処方詳細を作成"
-        edit: "%{user_name}さんの処方詳細を編集中"
+        new: "%{user_name}さんの処方薬を記録中"
+        edit: "%{user_name}さんの処方薬を編集中"
       medicine:
         index: 登録医薬品一覧
         new: 医薬品登録
@@ -108,6 +108,7 @@ ja:
     medicine_update: この医薬品の採用を許可する
     medicine_destroy: この医薬品の登録を削除する
     prescription_detail_new: 処方薬を登録する
+    prescription_detail_destroy: 処方薬を削除する
   message:
     narrow_down: 検索条件を設定し、50件以下に絞り込みを行ってください
     great_number_of_likes: "%{count}件のいいねを獲得しており、多くのユーザーから支持されています！"
@@ -129,8 +130,12 @@ ja:
       destroy_success: 処方内容記録を削除しました
       confirmation_of_destruction: 削除すると元に戻せませんがよろしいですか？
     prescription_detail:
-      create_success: 処方内容詳細を作成しました
-      create_failure: 処方内容詳細を作成できません
+      create_success: 処方薬を記録しました
+      create_failure: 処方薬を作成できません
+      update_success: 処方薬を更新しました
+      update_failure: 処方薬を更新できません
+      destroy_confirm: 処方薬の記録を削除しますか？
+      destroy_success: 処方薬の記録を削除しました
     medicine:
       create_success: 医薬品を登録しました
       create_failure: 医薬品登録できませんでした
