@@ -60,6 +60,8 @@ ja:
         standard: 規格
         unit: 単位
         permission: 採用状態
+      take_method_detail:
+        style: 服用時点
     title:
       user:
         show: ユーザー情報を確認中
@@ -84,6 +86,9 @@ ja:
         index: 登録医薬品一覧
         new: 医薬品登録
         show: 医薬品詳細
+      take_method_detail:
+        index: 用法一覧
+        new: 用法登録
   button:
     sign_out: ログアウト
     user_show: ユーザー情報確認
@@ -109,6 +114,8 @@ ja:
     medicine_destroy: この医薬品の登録を削除する
     prescription_detail_new: 処方薬を登録する
     prescription_detail_destroy: 処方薬を削除する
+    take_method_detail_index: 服用時点一覧へ移動
+    take_method_detail_new: 服用時点作成へ移動
   message:
     narrow_down: 検索条件を設定し、50件以下に絞り込みを行ってください
     great_number_of_likes: "%{count}件のいいねを獲得しており、多くのユーザーから支持されています！"
