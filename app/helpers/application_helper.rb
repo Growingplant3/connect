@@ -182,4 +182,10 @@ module ApplicationHelper
       render partial: "button", locals: { medicine: medicine }
     end
   end
+
+  def delete_button_in_prescription_detail_edit
+    if action_name == "edit"
+      link_to t('button.prescription_detail_destroy'), user_medicine_notebook_record_prescription_detail_path(@user, @medicine_notebook_record, @prescription_detail), method: :delete, data: { confirm: t('message.prescription_detail.destroy_confirm') }
+    end
+  end
 end
