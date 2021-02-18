@@ -129,12 +129,12 @@ module ApplicationHelper
       user_medicine_notebook_record_prescription_details_path(params[:user_id], params[:medicine_notebook_record_id]) if controller_name == "prescription_details"
       user_medicine_notebook_records_path(params[:user_id]) if controller_name == "medicine_notebook_records"
       medicines_path if controller_name == "medicines"
-      take_method_details_path if controller_name = "take_method_details"
+      take_method_details_path if controller_name == "take_method_details"
     when "edit","update"
       user_medicine_notebook_record_prescription_detail_path(params[:user_id], params[:medicine_notebook_record_id], params[:id]) if controller_name == "prescription_details"
       user_medicine_notebook_record_path(params[:user_id], params[:id]) if controller_name == "medicine_notebook_records"
       medicine_path if controller_name == "medicines"
-      take_method_detail_path if controller_name = "take_method_details"
+      take_method_detail_path if controller_name == "take_method_details"
     end
   end
 
