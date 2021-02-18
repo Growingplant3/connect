@@ -99,9 +99,15 @@ module ApplicationHelper
     end
   end
 
-  def sample_user_login
+  def sample_user_first_login
     unless user_signed_in? || pharmacy_signed_in?
-      link_to t('button.sample_user'), homes_sample_user_sign_in_path, method: :post
+      link_to t('button.sample_user_first'), homes_sample_user_first_sign_in_path, method: :post
+    end
+  end
+
+  def sample_user_second_login
+    unless user_signed_in? || pharmacy_signed_in?
+      link_to t('button.sample_user_second'), homes_sample_user_second_sign_in_path, method: :post
     end
   end
 
@@ -188,6 +194,12 @@ module ApplicationHelper
   def delete_button_in_prescription_detail_edit
     if action_name == "edit"
       link_to t('button.prescription_detail_destroy'), user_medicine_notebook_record_prescription_detail_path(@user, @medicine_notebook_record, @prescription_detail), method: :delete, data: { confirm: t('message.prescription_detail.destroy_confirm') }
+    end
+  end
+
+  def only_master_view_in_medicines_index(role,name)
+    if role == "master"
+      I18n.t('activerecord.title.medicine.only_master', name: name)
     end
   end
 end

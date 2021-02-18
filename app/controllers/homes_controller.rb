@@ -2,8 +2,21 @@ class HomesController < ApplicationController
   def index
   end
 
-  def sample_user
+  def sample_user_first
     unless user = User.find_by_email("kikukawa@gmail.com")
+      random_words = SecureRandom.urlsafe_base64
+      sample_name = "sample_user"
+      random_email = "#{random_words}@gmail.com"
+      random_password = random_words
+      user = User.create(name: sample_name, email: random_email, password: random_password)
+    end
+    sign_in user
+    flash[:notice] = I18n.t('message.sample_user_login')
+    redirect_to user
+  end
+
+  def sample_user_second
+    unless user = User.find_by_email("nogiku@gmail.com")
       random_words = SecureRandom.urlsafe_base64
       sample_name = "sample_user"
       random_email = "#{random_words}@gmail.com"

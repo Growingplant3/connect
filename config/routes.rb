@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "homes#index"
-  post '/homes/sample_user_sign_in', to: 'homes#sample_user'
+  post '/homes/sample_user_first_sign_in', to: 'homes#sample_user_first'
+  post '/homes/sample_user_second_sign_in', to: 'homes#sample_user_second'
   post '/homes/sample_pharmacy_sign_in', to: 'homes#sample_pharmacy'
   post '/homes/developer_sign_in', to: 'homes#developer'
   post '/homes/admin_sign_in', to: 'homes#admin'
