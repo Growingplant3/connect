@@ -5,6 +5,7 @@
 <% @medicines.each do |medicine| %>
   <div>
     <%= link_to "#{medicine.name} #{medicine.standard}#{medicine.unit}", medicine_path(medicine) %><br>
+    <%= only_master_view_in_medicines_index(current_user.role,medicine.user.name) %><br>
     <%= t('activerecord.attributes.medicine.permission') %> <%= medicine.permission_i18n %><br>
   </div>
   <hr>

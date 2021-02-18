@@ -86,6 +86,7 @@ ja:
         index: 登録医薬品一覧
         new: 医薬品登録
         show: 医薬品詳細
+        only_master: "担当 %{name}"
       take_method_detail:
         index: 服用時点一覧
         new: 服用時点登録
@@ -100,7 +101,8 @@ ja:
     like_destroy: この薬局のいいねを解除する
     information_disclosure_create: この薬局へ情報を公開する
     information_disclosure_destroy: この薬局への情報公開を中止する
-    sample_user: サンプルユーザーでログインする
+    sample_user_first: サンプルユーザー1でログインする
+    sample_user_second: サンプルユーザー2でログインする
     sample_pharmacy: サンプル薬局でログインする
     developer: 開発者でログインする
     admin: 管理者でログインする
