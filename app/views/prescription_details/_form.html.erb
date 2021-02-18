@@ -13,10 +13,17 @@
 
 <%= form_with(model: [@user, @medicine_notebook_record, @prescription_detail], local: true, url: create_or_update_root ) do |f| %>
   <div>
-    <%= f.fields_for :medicine_record_relations do |f| %>      
+    <%= f.fields_for :medicine_record_relations do |f| %>
       <div>
         <%= f.label t('activerecord.attributes.medicine.name') %>
         <%= f.select :medicine_id, Medicine.choices %>
+      </div>
+    <% end %>
+
+    <%= f.fields_for :take_medicine_relations do |f| %>
+      <div>
+        <%= f.label t('activerecord.attributes.take_method_detail.style') %>
+        <%= f.select :take_method_detail_id, TakeMethodDetail.to_hash_for_choices %>
       </div>
     <% end %>
 
