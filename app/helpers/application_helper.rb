@@ -126,11 +126,13 @@ module ApplicationHelper
   def create_or_update_root
     case action_name
     when "new","create"
+      user_medicine_notebook_record_prescription_details_path(params[:user_id], params[:medicine_notebook_record_id]) if controller_name == "prescription_details"
       user_medicine_notebook_records_path(params[:user_id]) if controller_name == "medicine_notebook_records"
-      medicines_path if params[:controller] == "medicines"
+      medicines_path if controller_name == "medicines"
     when "edit","update"
+      user_medicine_notebook_record_prescription_detail_path(params[:user_id], params[:medicine_notebook_record_id], params[:id]) if controller_name == "prescription_details"
       user_medicine_notebook_record_path(params[:user_id], params[:id]) if controller_name == "medicine_notebook_records"
-      medicine_path if params[:controller] == "medicines"
+      medicine_path if controller_name == "medicines"
     end
   end
 
@@ -178,6 +180,12 @@ module ApplicationHelper
   def pharmacy_button_in_medicine_show(current_user,medicine)
     if current_user.role == "master"
       render partial: "button", locals: { medicine: medicine }
+    end
+  end
+
+  def delete_button_in_prescription_detail_edit
+    if action_name == "edit"
+      link_to t('button.prescription_detail_destroy'), user_medicine_notebook_record_prescription_detail_path(@user, @medicine_notebook_record, @prescription_detail), method: :delete, data: { confirm: t('message.prescription_detail.destroy_confirm') }
     end
   end
 end

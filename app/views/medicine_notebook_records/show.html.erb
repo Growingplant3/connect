@@ -1,18 +1,16 @@
 <h1><%= t('activerecord.title.medicine_notebook_record.show', user_name: @user.name ) %></h1>
 
-<%= t('activerecord.attributes.pharmacy.name') %>:<%= @medicine_notebook_record.pharmacy.name %><br>
-<%= t('activerecord.attributes.medicine_notebook_record.date_of_issue') %>:<%= l(@medicine_notebook_record.date_of_issue, format: :long) %><br>
-<%= t('activerecord.attributes.medicine_notebook_record.date_of_dispensing') %>:<%= l(@medicine_notebook_record.date_of_dispensing, format: :long) %><br>
-<%= t('activerecord.attributes.medicine_notebook_record.medical_institution_name') %>:<%= @medicine_notebook_record.medical_institution_name %><br>
-<%= t('activerecord.attributes.medicine_notebook_record.doctor_name') %>:<%= @medicine_notebook_record.doctor_name %><br>
-<%= t('activerecord.attributes.medicine_notebook_record.note') %>:<%= @medicine_notebook_record.note %><br>
+<%= render partial: "shared/record_summary", locals: { medicine_notebook_record: @medicine_notebook_record } %>
 
-<% @medicine_notebook_record.prescription_details.each_with_index do |detail,index| %>
-  <%= t('activerecord.attributes.prescription_detail.show.numbering', index: index+1) %><br>
-  <%= t('activerecord.attributes.prescription_detail.show.prescription_days', prescription_days: detail.prescription_days) %><br>
-  <%= t('activerecord.attributes.prescription_detail.show.times', times: detail.times) %><br>
-  <%= t('activerecord.attributes.prescription_detail.show.daily_dose', daily_dose: detail.daily_dose) %><br>
-  <%= t('activerecord.attributes.prescription_detail.show.number_of_dose', number_of_dose: detail.number_of_dose) %><br>
+<% if @medicine_notebook_record.prescription_details.present? %>
+  <% index = 1 %>
+  <% @medicine_notebook_record.prescription_details.each do |detail| %> 
+    <% detail.connect_medicines.each do |medicine| %>
+        <%= t('activerecord.attributes.prescription_detail.show.numbering', index: index ) %> <%= link_to "#{medicine.name}#{medicine.standard}#{medicine.unit}", edit_user_medicine_notebook_record_prescription_detail_path(@user, @medicine_notebook_record, detail) %><br>
+        <%= t('activerecord.attributes.prescription_detail.show.arranged_format', days: detail.prescription_days, times: detail.times, daily_dose: detail.daily_dose, number_of_dose: detail.number_of_dose) %><br>
+      <% index +=1 %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <br>

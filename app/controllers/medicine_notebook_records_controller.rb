@@ -10,7 +10,6 @@ class MedicineNotebookRecordsController < ApplicationController
 
   def new
     @medicine_notebook_record = @user.medicine_notebook_records.build
-    @prescription_detail = @medicine_notebook_record.prescription_details.build
   end
 
   def create
@@ -50,8 +49,7 @@ class MedicineNotebookRecordsController < ApplicationController
   private
 
   def medicine_notebook_record_params
-    params.require(:medicine_notebook_record).permit(:date_of_issue, :date_of_dispensing, :medical_institution_name, :doctor_name, :note,
-      prescription_details_attributes: [:id, :prescription_days, :times, :daily_dose, :number_of_dose, :_destroy])
+    params.require(:medicine_notebook_record).permit(:date_of_issue, :date_of_dispensing, :medical_institution_name, :doctor_name, :note)
   end
 
   def set_medicine_notebook_record

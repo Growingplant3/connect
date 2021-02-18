@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_113733) do
+ActiveRecord::Schema.define(version: 2021_02_17_052616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2021_02_16_113733) do
     t.datetime "updated_at", null: false
     t.index ["pharmacy_id"], name: "index_medicine_notebook_records_on_pharmacy_id"
     t.index ["user_id"], name: "index_medicine_notebook_records_on_user_id"
+  end
+
+  create_table "medicine_record_relations", force: :cascade do |t|
+    t.bigint "medicine_id"
+    t.bigint "prescription_detail_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medicine_id"], name: "index_medicine_record_relations_on_medicine_id"
+    t.index ["prescription_detail_id"], name: "index_medicine_record_relations_on_prescription_detail_id"
   end
 
   create_table "medicines", force: :cascade do |t|
@@ -128,6 +137,8 @@ ActiveRecord::Schema.define(version: 2021_02_16_113733) do
   add_foreign_key "activities", "pharmacies"
   add_foreign_key "medicine_notebook_records", "pharmacies"
   add_foreign_key "medicine_notebook_records", "users"
+  add_foreign_key "medicine_record_relations", "medicines"
+  add_foreign_key "medicine_record_relations", "prescription_details"
   add_foreign_key "medicines", "users"
   add_foreign_key "prescription_details", "medicine_notebook_records"
 end
