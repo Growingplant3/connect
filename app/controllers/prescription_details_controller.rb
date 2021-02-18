@@ -2,6 +2,7 @@ class PrescriptionDetailsController < ApplicationController
   before_action :set_prescription_detail, only: %i[edit update destroy]
   before_action :set_medicine_notebook_record
   before_action :set_user
+  before_action :only_pharmacies
 
   def new
     @prescription_detail = PrescriptionDetail.new
@@ -58,5 +59,12 @@ class PrescriptionDetailsController < ApplicationController
 
   def set_user
     @user = User.find(params[:user_id])
+  end
+
+  def only_pharmacies
+    unless pharmacy_signed_in?
+      flash[:alert] = I18n.t('message.prescription_detail.only_pharmacies')
+      redirect_to root_path
+    end
   end
 end
