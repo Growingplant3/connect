@@ -6,6 +6,7 @@ class PrescriptionDetailsController < ApplicationController
   def new
     @prescription_detail = PrescriptionDetail.new
     @prescription_detail.medicine_record_relations.build
+    @prescription_detail.take_medicine_relations.build
   end
 
   def create
@@ -42,7 +43,9 @@ class PrescriptionDetailsController < ApplicationController
 
   def prescription_detail_params
     params.require(:prescription_detail).permit(:prescription_days, :times, :daily_dose, :number_of_dose,
-      medicine_record_relations_attributes: [:id, :medicine_id, :_destroy])
+      medicine_record_relations_attributes: [:id, :medicine_id, :_destroy],
+      take_medicine_relations_attributes: [:id, :take_method_detail_id, :_destroy]
+    )
   end
 
   def set_prescription_detail

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_032623) do
+ActiveRecord::Schema.define(version: 2021_02_18_065332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 2021_02_18_032623) do
     t.index ["medicine_notebook_record_id"], name: "index_prescription_details_on_medicine_notebook_record_id"
   end
 
+  create_table "take_medicine_relations", force: :cascade do |t|
+    t.bigint "prescription_detail_id"
+    t.bigint "take_method_detail_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prescription_detail_id"], name: "index_take_medicine_relations_on_prescription_detail_id"
+    t.index ["take_method_detail_id"], name: "index_take_medicine_relations_on_take_method_detail_id"
+  end
+
   create_table "take_method_details", force: :cascade do |t|
     t.string "style", null: false
     t.datetime "created_at", null: false
@@ -147,4 +156,6 @@ ActiveRecord::Schema.define(version: 2021_02_18_032623) do
   add_foreign_key "medicine_record_relations", "prescription_details"
   add_foreign_key "medicines", "users"
   add_foreign_key "prescription_details", "medicine_notebook_records"
+  add_foreign_key "take_medicine_relations", "prescription_details"
+  add_foreign_key "take_medicine_relations", "take_method_details"
 end

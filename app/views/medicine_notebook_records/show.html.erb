@@ -5,9 +5,9 @@
 <% if @medicine_notebook_record.prescription_details.present? %>
   <% index = 1 %>
   <% @medicine_notebook_record.prescription_details.each do |detail| %> 
-    <% detail.connect_medicines.each do |medicine| %>
+    <% detail.connect_medicines.zip(detail.connect_methods) do |medicine, method| %>
         <%= t('activerecord.attributes.prescription_detail.show.numbering', index: index ) %> <%= link_to "#{medicine.name}#{medicine.standard}#{medicine.unit}", edit_user_medicine_notebook_record_prescription_detail_path(@user, @medicine_notebook_record, detail) %><br>
-        <%= t('activerecord.attributes.prescription_detail.show.arranged_format', days: detail.prescription_days, times: detail.times, daily_dose: detail.daily_dose, number_of_dose: detail.number_of_dose) %><br>
+        <%= t('activerecord.attributes.prescription_detail.show.arranged_format', days: detail.prescription_days, times: detail.times, method: method.style, daily_dose: detail.daily_dose, number_of_dose: detail.number_of_dose) %><br>
       <% index +=1 %>
     <% end %>
   <% end %>
