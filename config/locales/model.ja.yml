@@ -42,7 +42,7 @@ ja:
           date_of_issue: "処方箋発行日: %{date_of_issue}"
           medical_institution_name: "医療機関名: %{medical_institution_name}"
           note: "備考: %{note}"
-          nothing: 現在処方内容記録は何もありません
+          nothing: 現在お薬手帳記録記録は何もありません
       prescription_detail:
         prescription_days: 処方日数
         times: 服用回数
@@ -54,7 +54,7 @@ ja:
           times: "服用回数: %{times}回"
           daily_dose: "1日量: %{daily_dose}錠"
           number_of_dose: "1回量: %{number_of_dose}"
-          arranged_format: "1日%{daily_dose}錠 1日%{times}回  [%{number_of_dose}] %{days}日分"
+          arranged_format: "1日%{daily_dose}錠 1日%{times}回 %{method} [%{number_of_dose}] %{days}日分"
       medicine:
         name: 医薬品名
         standard: 規格
@@ -74,10 +74,10 @@ ja:
         search: 薬局検索
         index: 薬局一覧
       medicine_notebook_record:
-        index: "%{user_name}さんの処方内容記録一覧"
-        new: "%{user_name}さんの処方内容記録作成"
-        show: "%{user_name}さんの処方内容記録を参照中"
-        edit: "%{user_name}さんの処方内容記録を編集中"
+        index: "%{user_name}さんのお薬手帳記録記録一覧"
+        new: "%{user_name}さんのお薬手帳記録記録作成"
+        show: "%{user_name}さんのお薬手帳記録記録を参照中"
+        edit: "%{user_name}さんのお薬手帳記録記録を編集中"
         notification: 確認事項
       prescription_detail:
         new: "%{user_name}さんの処方薬を記録中"
@@ -104,8 +104,8 @@ ja:
     sample_pharmacy: サンプル薬局でログインする
     developer: 開発者でログインする
     admin: 管理者でログインする
-    medicine_notebook_record_index: 処方内容一覧を参照する
-    medicine_notebook_record_create: 処方内容記録を作成する
+    medicine_notebook_record_index: お薬手帳記録一覧を参照する
+    medicine_notebook_record_create: お薬手帳記録記録を作成する
     medicine_notebook_record_show: 詳細を確認する
     transition_from_medicine_notebook_record_to_users_show: "%{user_name}さんのページへ移動する"
     medicine_index: 登録医薬品一覧へ移動
@@ -131,11 +131,11 @@ ja:
     developer_login: 開発者でログインしました
     admin_login: 管理者でログインしました
     medicine_notebook_record:
-      create_success: 処方内容記録を作成しました
-      create_failure: 処方内容記録を作成できません
-      update_success: 処方内容記録を更新しました
-      update_failure: 処方内容記録を更新できません
-      destroy_success: 処方内容記録を削除しました
+      create_success: お薬手帳記録記録を作成しました
+      create_failure: お薬手帳記録記録を作成できません
+      update_success: お薬手帳記録記録を更新しました
+      update_failure: お薬手帳記録記録を更新できません
+      destroy_success: お薬手帳記録記録を削除しました
       confirmation_of_destruction: 削除すると元に戻せませんがよろしいですか？
     prescription_detail:
       create_success: 処方薬を記録しました
