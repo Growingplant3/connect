@@ -1,0 +1,7 @@
+<h1><%= t('activerecord.title.take_method_detail.index') %></h1>
+<%= link_to t('button.take_method_detail_new'), new_take_method_detail_path %>
+<hr>
+
+<% @take_method_details.each_with_index do |method, index| %>
+  <%= "#{index}: #{method.style}" %> <%= link_to t('button.take_method_detail_destroy') %><br>
+<% end %>
