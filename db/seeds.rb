@@ -36,4 +36,5 @@ end
 azilsartan_10_mg = Medicine.create(name: "アジルバ錠", standard: 10, unit: 0, permission: true, user_id: developer1.id)
 lansoprazole_od_15_mg = Medicine.create(name: "タケプロンOD錠", standard: 15, unit: 0, permission: true, user_id: developer1.id)
 alogliptin_25_mg = Medicine.create(name: "ネシーナ錠", standard: 25, unit: 0, user_id: developer1.id)
-baloxavir_marboxil_10_mg = Medicine.create(name: "ゾフルーザ錠", standard: 10, unit: 0, user_id: developer2.id)
+ramelteon_8_mg = Medicine.create(name: "ロゼレム錠", standard: 8, unit: 0, user_id: developer1.id)
+baloxavir_marboxil_10_mg = Medicine.create(name: "ゾフルーザ錠", standard: 20, unit: 0, user_id: developer2.id)
