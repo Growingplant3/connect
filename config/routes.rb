@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :likes, only: %i[create destroy]
   resources :information_disclosures, only: %i[create destroy]
   resources :medicines, except: [:edit]
+  resources :take_method_details
 end
