@@ -202,4 +202,12 @@ module ApplicationHelper
       I18n.t('activerecord.title.medicine.only_master', name: name)
     end
   end
+
+  def medicine_link_button(user, medicine_notebook_record, detail, medicine)
+    if pharmacy_signed_in?
+      link_to "#{medicine.name}#{medicine.standard}#{medicine.unit}", edit_user_medicine_notebook_record_prescription_detail_path(user, medicine_notebook_record, detail)
+    elsif user_signed_in?
+      "#{medicine.name}#{medicine.standard}#{medicine.unit}"
+    end
+  end
 end
