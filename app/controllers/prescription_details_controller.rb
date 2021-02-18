@@ -1,5 +1,5 @@
 class PrescriptionDetailsController < ApplicationController
-  before_action :set_prescription_detail, only: %i[edit show update destroy]
+  before_action :set_prescription_detail, only: %i[edit update destroy]
   before_action :set_medicine_notebook_record
   before_action :set_user
 
@@ -20,6 +20,22 @@ class PrescriptionDetailsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @prescription_detail.update(prescription_detail_params)
+      flash[:notice] = I18n.t('message.prescription_detail.update_success')
+      redirect_to user_medicine_notebook_record_path(@user, @medicine_notebook_record)
+    else
+      flash[:notice] = I18n.t('message.prescription_detail.update_failure')
+      render :edit
+    end
+  end
+
+  def destroy
+    @prescription_detail.destroy
+    flash[:notice] = I18n.t('message.prescription_detail.destroy_success')
+    redirect_to user_medicine_notebook_record_path(@user, @medicine_notebook_record)
   end
 
   private
