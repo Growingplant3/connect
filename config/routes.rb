@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
   resources :users, except: %i[new create] do
     resources :medicine_notebook_records do
-      resources :prescription_details
+      resources :prescription_details, except: %i[index show]
     end
   end
   devise_for :pharmacies, controllers: {
