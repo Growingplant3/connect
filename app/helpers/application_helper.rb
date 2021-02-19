@@ -9,54 +9,54 @@ module ApplicationHelper
 
   def user_sign_in_or_sign_out_button
     if user_signed_in?
-      link_to t('button.sign_out'), destroy_user_session_path, method: :delete
+      link_to t('button.sign_out'), destroy_user_session_path, method: :delete, class: "btn btn-warning"
     else
       unless pharmacy_signed_in?
-        link_to t('devise.sessions.new.user_sign_in'), new_user_session_path
+        link_to t('devise.sessions.new.user_sign_in'), new_user_session_path, class: "btn btn-warning"
       end
     end
   end
 
   def pharmacy_sign_in_or_sign_out_button
     if pharmacy_signed_in?
-      link_to t('button.sign_out'), destroy_pharmacy_session_path, method: :delete
+      link_to t('button.sign_out'), destroy_pharmacy_session_path, method: :delete, class: "btn btn-warning"
     else
       unless user_signed_in?
-        link_to t('devise.sessions.new.pharmacy_sign_in'), new_pharmacy_session_path
+        link_to t('devise.sessions.new.pharmacy_sign_in'), new_pharmacy_session_path, class: "btn btn-warning"
       end
     end
   end
 
   def user_sign_up_or_show_button
     if user_signed_in?
-      link_to t('button.user_show'), current_user
+      link_to t('button.user_show'), current_user, class: "btn btn-info"
     else
       unless user_signed_in? || pharmacy_signed_in?
-        link_to t('devise.registrations.new.user_sign_up'), new_user_registration_path
+        link_to t('devise.registrations.new.user_sign_up'), new_user_registration_path, class: "btn btn-info"
       end
     end
   end
 
   def pharmacy_sign_up_or_show_button
     if pharmacy_signed_in?
-      link_to t('button.pharmacy_show'), current_user
+      link_to t('button.pharmacy_show'), current_user, class: "btn btn-info"
     else
       unless user_signed_in? || pharmacy_signed_in?
-        link_to t('devise.registrations.new.pharmacy_sign_up'), new_pharmacy_registration_path
+        link_to t('devise.registrations.new.pharmacy_sign_up'), new_pharmacy_registration_path, class: "btn btn-info"
       end
     end
   end
 
   def user_search_button
     if pharmacy_signed_in?
-      link_to t('activerecord.title.user.search'), users_path(session[:pharmacy_id] = current_pharmacy.id)
+      link_to t('activerecord.title.user.search'), users_path(session[:pharmacy_id] = current_pharmacy.id), class: "btn btn-primary"
     end      
   end
 
   def developer_button
     return unless user_signed_in?
     if current_user.role == "developer" || current_user.role == "master"
-      link_to t('button.medicine_index'), medicines_path
+      link_to t('button.medicine_index'), medicines_path, class: "btn btn-danger"
     end
   end
 
@@ -101,31 +101,31 @@ module ApplicationHelper
 
   def sample_user_first_login
     unless user_signed_in? || pharmacy_signed_in?
-      link_to t('button.sample_user_first'), homes_sample_user_first_sign_in_path, method: :post
+      link_to t('button.sample_user_first'), homes_sample_user_first_sign_in_path, method: :post, class: "btn btn-success"
     end
   end
 
   def sample_user_second_login
     unless user_signed_in? || pharmacy_signed_in?
-      link_to t('button.sample_user_second'), homes_sample_user_second_sign_in_path, method: :post
+      link_to t('button.sample_user_second'), homes_sample_user_second_sign_in_path, method: :post, class: "btn btn-success"
     end
   end
 
   def sample_pharmacy_login
     unless user_signed_in? || pharmacy_signed_in?
-      link_to t('button.sample_pharmacy'), homes_sample_pharmacy_sign_in_path, method: :post
+      link_to t('button.sample_pharmacy'), homes_sample_pharmacy_sign_in_path, method: :post, class: "btn btn-success"
     end
   end
 
   def developer_login
     unless user_signed_in? || pharmacy_signed_in?
-      link_to t('button.developer'), homes_developer_sign_in_path, method: :post
+      link_to t('button.developer'), homes_developer_sign_in_path, method: :post, class: "btn btn-success"
     end
   end
 
   def admin_login
     unless user_signed_in? || pharmacy_signed_in?
-      link_to t('button.admin'), homes_admin_sign_in_path, method: :post
+      link_to t('button.admin'), homes_admin_sign_in_path, method: :post, class: "btn btn-success"
     end
   end
 
