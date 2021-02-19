@@ -6,11 +6,11 @@ User.create(name: "菊池稔", email: "kikuchi@gmail.com", password: "password",
 birthday: "1965-01-02".to_date, sex: 1, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
 User.create(name: "菊川修二", email: "kikukiku@gmail.com", password: "password", postcode: "8100031", address: "福岡県筑後市", telephone_number: "09213579086",
 birthday: nil, sex: 0, side_effect: "特に無し", allergy: "特に無し", sick: "特に無し", operation: "特に無し", note: "特に無し", role: 0)
-developer1 = User.create(name: "大日○住友製薬の開発者", email: "developer@gmail.com", password: "password", role: 1)
-developer2 = User.create(name: "塩○義製薬の開発者", email: "developer2@gmail.com", password: "password", role: 1)
+developer1 = User.create(name: "○田薬品の開発者", email: "developer@gmail.com", password: "password", role: 1)
+developer2 = User.create(name: "大日○住友製薬の開発者", email: "developer2@gmail.com", password: "password", role: 1)
 developer3 = User.create(name: "塩○義製薬の開発者", email: "developer3@gmail.com", password: "password", role: 1)
 developer4 = User.create(name: "○ノフィの開発者", email: "developer4@gmail.com", password: "password", role: 1)
-developer5 = User.create(name: "アステ○ス制約の開発者", email: "developer5@gmail.com", password: "password", role: 1)
+developer5 = User.create(name: "アステ○ス製薬の開発者", email: "developer5@gmail.com", password: "password", role: 1)
 developer6 = User.create(name: "第一○共の開発者", email: "developer6@gmail.com", password: "password", role: 1)
 
 User.create(name: "管理者", email: "admin@gmail.com", password: "password", role: 2)

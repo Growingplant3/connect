@@ -146,6 +146,7 @@ ja:
       update_failure: 処方薬を更新できません
       destroy_confirm: 処方薬の記録を削除しますか？
       destroy_success: 処方薬の記録を削除しました
+      only_pharmacies: 薬局のみ利用可能です
     medicine:
       create_success: 医薬品を登録しました
       create_failure: 医薬品登録できませんでした
