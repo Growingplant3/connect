@@ -12,7 +12,7 @@ developer3 = User.create(name: "塩○義製薬の開発者", email: "developer3
 developer4 = User.create(name: "○ノフィの開発者", email: "developer4@gmail.com", password: "password", role: 1)
 developer5 = User.create(name: "アステ○ス製薬の開発者", email: "developer5@gmail.com", password: "password", role: 1)
 developer6 = User.create(name: "第一○共の開発者", email: "developer6@gmail.com", password: "password", role: 1)
-
+developer7 = User.create(name: "沢○製薬", email: "developer6@gmail.com", password: "password", role: 1)
 User.create(name: "管理者", email: "admin@gmail.com", password: "password", role: 2)
 
 first_pharmacy = Pharmacy.create(name: "ひまわり薬局", email: "himawari@gmail.com", password: "password", postcode: "2720003", address: "千葉県市川市",
@@ -47,6 +47,7 @@ Medicine.create(name: "ゾフルーザ錠", standard: 20, unit: 0, permission: t
 lasix_20_mg = Medicine.create(name: "ラシックス錠", standard: 20, unit: 0, permission: true, user_id: developer4.id)
 myslee_5_mg = Medicine.create(name: "マイスリー錠", standard: 5, unit: 0, permission: true, user_id: developer5.id)
 loxonin_60_mg = Medicine.create(name: "ロキソニン錠", standard: 60, unit: 0, permission: true, user_id: developer6.id)
+Medicine.create(name: "セフカペンピボキシル塩酸塩錠", standard: 100, user_id: developer7.id)
 
 method_1 = TakeMethodDetail.create(style: "朝食後")
 TakeMethodDetail.create(style: "朝食前")
