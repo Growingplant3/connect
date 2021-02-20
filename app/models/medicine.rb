@@ -16,9 +16,9 @@ class Medicine < ApplicationRecord
 
   def self.choices
     hash = {}
-    permit_medicines = self.where(permission: "permit")
-    permit_medicines.pluck(:name).zip(permit_medicines.pluck(:id)) do |name, index|
-      hash[name] = index
+    permit_medicines = Medicine.where(permission: "permit")
+    permit_medicines.pluck(:id, :name, :standard, :unit).each do | id, name, standard, unit |
+      hash["#{name}#{standard}#{unit}"] = id
     end
     hash
   end
