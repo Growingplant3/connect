@@ -1,2 +1,2 @@
-server '3.1391.83.120', user: 'connect', roles: %w{app db web}
+server '3.139.183.120', user: 'connect', roles: %w{app db web}
 set :ssh_options, keys: '/Users/yoshinori/.ssh/id_rsa'
