@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :information_disclosures, dependent: :destroy
   has_many :medicine_notebook_records, dependent: :destroy
   has_many :medicines, dependent: :destroy
-  validates :name, presence: true
+  validates :name, length: { maximum: 20 }, presence: true
   validates :postcode, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }, allow_blank: true
   validates :telephone_number, format: { with: /\A[0-9]+\z/ }, length: { in: 10..11 }, allow_blank: true
   validates :sex, inclusion: { in: %w(unknown male female) }

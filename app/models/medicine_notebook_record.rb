@@ -3,7 +3,8 @@ class MedicineNotebookRecord < ApplicationRecord
   accepts_nested_attributes_for :prescription_details, allow_destroy: true
   belongs_to :user
   belongs_to :pharmacy
-  validates :date_of_issue, :date_of_dispensing, :medical_institution_name, :doctor_name, presence: true
+  validates :date_of_issue, :date_of_dispensing, presence: true
+  validates :medical_institution_name, :doctor_name, length: { maximum: 20 }, presence: true
   validates_associated :prescription_details
   validate :should_be_past
   scope :descending_order, -> { order(date_of_issue: "desc") }

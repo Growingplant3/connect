@@ -7,7 +7,8 @@ class Pharmacy < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :information_disclosures, dependent: :destroy
   has_many :medicine_notebook_records, dependent: :destroy
-  validates :name, presence: true
+  validates :name, length: { maximum: 20 }, presence: true
+  validates :address, length: { maximum: 50 }
   validates :postcode, format: { with: /\A[0-9]+\z/ }, length: { is: 7 }, allow_blank: true
   validates :normal_telephone_number, format: { with: /\A[0-9]+\z/ }, length: { in: 10..11 }, allow_blank: true
   validates :emergency_telephone_number, format: { with: /\A[0-9]+\z/ }, length: { in: 10..11 }, allow_blank: true

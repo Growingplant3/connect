@@ -1,5 +1,5 @@
 class TakeMethodDetail < ApplicationRecord
-  validates :style, presence: true
+  validates :style, length: { maximum: 20 }, presence: true
   has_many :take_medicine_relations
 
   def self.to_hash_for_choices
