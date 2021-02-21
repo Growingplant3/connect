@@ -62,7 +62,7 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "connect_#{Rails.env}"
-  config.action_mailer.default_url_options = { host: 'https://ancient-cliffs-02655.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'http://ec2-3-139-183-120.us-east-2.compute.amazonaws.com/' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
