@@ -49,7 +49,7 @@ module ApplicationHelper
 
   def user_search_button
     if pharmacy_signed_in?
-      link_to t('activerecord.title.user.search'), users_path(session[:pharmacy_id] = current_pharmacy.id), class: "btn btn-primary"
+      link_to t('activerecord.title.user.search'), users_path, class: "btn btn-primary"
     end      
   end
 
