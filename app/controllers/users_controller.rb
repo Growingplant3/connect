@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :myself_of_pharmacies, only: [:show]
 
   def index
+    limited_user_ids = Pharmacy.have_search_permission(current_pharmacy.id)
     @gender_choices = User.set_gender
     @q = User.standard_exclusion(limited_user_ids).selection(params[:q]).ransack(params[:q])
     @Users = @q.result(distinct: true)
@@ -61,9 +62,5 @@ class UsersController < ApplicationController
       flash[:alert] = I18n.t('flash.alert.user.myself_or_pharmacies')
       redirect_to root_path
     end
-  end
-
-  def limited_user_ids
-    Pharmacy.have_search_permission(session[:pharmacy_id])
   end
 end
