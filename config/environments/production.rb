@@ -68,7 +68,7 @@ Rails.application.configure do
   {
    user_name: ENV['SENDGRID_USERNAME'],
    password: ENV['SENDGRID_PASSWORD'],
-   domain: "us-east-2.compute.amazonaws.com",
+   domain: "amazonaws.com",
    address: "smtp.sendgrid.net",
    port: 587,
    authentication: :plain,
