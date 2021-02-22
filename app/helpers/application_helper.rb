@@ -203,11 +203,11 @@ module ApplicationHelper
     end
   end
 
-  def medicine_link_button(user, medicine_notebook_record, detail, medicine)
+  def medicine_link_button(options={})
     if pharmacy_signed_in?
-      link_to "#{medicine.name}#{medicine.standard}#{medicine.unit}", edit_user_medicine_notebook_record_prescription_detail_path(user, medicine_notebook_record, detail)
+      link_to "#{options[:medicine_name]}#{options[:medicine_standard]}#{options[:medicine_unit]}", edit_user_medicine_notebook_record_prescription_detail_path(options[:user], options[:medicine_notebook_record], options[:detail])
     elsif user_signed_in?
-      "#{medicine.name}#{medicine.standard}#{medicine.unit}"
+      "#{options[:medicine_name]}#{options[:medicine_standard]}#{options[:medicine_unit]}"
     end
   end
 end

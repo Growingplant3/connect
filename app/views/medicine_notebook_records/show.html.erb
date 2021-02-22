@@ -6,7 +6,7 @@
   <% index = 1 %>
   <% @medicine_notebook_record.prescription_details.each do |detail| %> 
     <% detail.connect_medicines.zip(detail.connect_methods) do |medicine, method| %>
-        <%= t('activerecord.attributes.prescription_detail.show.numbering', index: index ) %> <%= medicine_link_button(@user, @medicine_notebook_record, detail, medicine) %><br>
+        <%= t('activerecord.attributes.prescription_detail.show.numbering', index: index ) %> <%= medicine_link_button user: @user, medicine_notebook_record: @medicine_notebook_record, detail: detail, medicine_name: medicine.name, medicine_standard: medicine.standard, medicine_unit: medicine.unit %><br>
         <%= t('activerecord.attributes.prescription_detail.show.arranged_format', days: detail.prescription_days, times: detail.times, method: method.style, daily_dose: detail.daily_dose, number_of_dose: detail.number_of_dose) %><br>
       <% index +=1 %>
     <% end %>
