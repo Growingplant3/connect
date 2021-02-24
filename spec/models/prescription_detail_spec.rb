@@ -12,5 +12,28 @@ RSpec.describe "処方詳細モデル機能", type: :model do
         expect(prescription_detail).to be_valid
       end
     end
+
+    context '新規登録の失敗' do
+      after { expect(prescription_detail).not_to be_valid }
+      it 'お薬手帳に紐づかない状態では新規登録できない' do
+        prescription_detail[:medicine_notebook_record_id] = nil
+      end
+
+      it '処方日数が未入力だと新規登録できない' do
+        prescription_detail[:prescription_days] = nil
+      end
+
+      it '服用回数が未入力だと新規登録できない' do
+        prescription_detail[:times] = nil
+      end
+
+      it '1日量が未入力だと新規登録できない' do
+        prescription_detail[:daily_dose] = nil
+      end
+
+      it '1回量が未入力だと新規登録できない' do
+        prescription_detail[:number_of_dose] = nil
+      end
+    end
   end
 end
