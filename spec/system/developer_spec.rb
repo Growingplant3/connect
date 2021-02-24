@@ -56,6 +56,36 @@ RSpec.describe '開発者管理機能', type: :system do
         click_on 'ログアウト'
         expect(current_path).to eq root_path
       end
+
+      it '医薬品登録ができる' do
+        click_on '登録医薬品一覧へ移動'
+        click_on '医薬品登録へ移動'
+        fill_in 'medicine[name]', with: 'sample_medicine錠'
+        fill_in 'medicine[standard]', with: '1.5'
+        find('#medicine_unit').set('mg')
+        click_on '登録する'
+        expect(current_path).to eq medicines_path
+        expect(page).to have_content '医薬品を登録しました'
+      end
+      
+      context '医薬品登録後' do
+        before { 
+          medicine
+          click_on '登録医薬品一覧へ移動'
+          click_on 'sample_medicine 1.5mg'
+        }
+        it '登録した医薬品の参照ができる' do
+          expect(current_path).to eq medicine_path(medicine)
+        end
+
+        it '登録した医薬品の採用状態を許可に変更することはできない' do
+          expect(page).not_to have_content 'この医薬品の採用を許可する'
+        end
+
+        it '医薬品の登録を削除することはできない' do
+          expect(page).not_to have_content 'この医薬品の登録を削除する'
+        end
+      end
     end
 
     context '一般ユーザーでログインした場合' do
