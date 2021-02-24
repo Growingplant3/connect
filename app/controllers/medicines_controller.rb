@@ -1,4 +1,5 @@
 class MedicinesController < ApplicationController
+  before_action :not_pharmacy
   before_action :developer_privileges
   before_action :master_privileges, only: %i[update destroy]
   before_action :set_medicine, only: %i[show update destroy]
@@ -41,6 +42,13 @@ class MedicinesController < ApplicationController
 
   private
 
+  def not_pharmacy
+    if pharmacy_signed_in?
+      flash[:alert] = I18n.t('message.medicine.special_authority')
+      redirect_to root_path
+    end
+  end
+
   def developer_privileges
     unless current_user.role == "master" || current_user.role == "developer"
       flash[:alert] = I18n.t('message.medicine.special_authority')
@@ -49,7 +57,7 @@ class MedicinesController < ApplicationController
   end
 
   def master_privileges
-    unless current_user.role == "master"
+    if current_user.role != "master"
       flash[:alert] = I18n.t('message.medicine.only_admin')
       redirect_to root_path
     end
