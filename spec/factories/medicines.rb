@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :medicine do
-    name { "MyString" }
+    name { "sample_medicine" }
     standard { 1.5 }
-    unit { 1 }
-    permission { false }
+    unit { 0 }
   end
 end

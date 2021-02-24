@@ -38,13 +38,7 @@
     <!-- sample_login -->
     
     <!-- alert_message -->
-      <% if notice.present? %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-
-      <% if alert.present? %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
+      <%= render "shared/notice_or_alert_message" %>
     <!-- alert_message -->
 
     <!-- main-content -->

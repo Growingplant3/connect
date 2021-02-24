@@ -2,7 +2,7 @@ class Medicine < ApplicationRecord
   belongs_to :user
   has_many :medicine_record_relations
   validates :standard, :unit, presence: true
-  validates :name, length: { maximum: 50 }
+  validates :name, length: { maximum: 50 }, presence: true
   enum unit: { mg: 0, μg: 1 }
   enum permission: { permit: true, unpermit: false }
 
