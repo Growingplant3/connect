@@ -216,7 +216,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
     describe 'いいね機能' do
       context 'いいねをつける' do
         before {
-          expect(Like.all.count).to eq 0
+          expect(Like.count).to eq 0
           visit pharmacy_path(new_pharmacy)
           click_on 'この薬局にいいねする'
         }
@@ -236,7 +236,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         it 'いいねをつけている薬局の、いいねを解除できる' do
           click_on 'この薬局にいいねする'
           click_on 'この薬局のいいねを解除する'
-          expect(Like.all.count).to eq 0
+          expect(Like.count).to eq 0
           expect(page).to have_content 'この薬局のいいねを解除しました'
         end
 
@@ -249,7 +249,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
     describe '情報開示機能' do
       context '情報開示を許可する' do
         before {
-          expect(InformationDisclosure.all.count).to eq 0
+          expect(InformationDisclosure.count).to eq 0
           visit pharmacy_path(new_pharmacy)
           page.accept_confirm do
             click_on 'この薬局へ情報を公開する'
@@ -273,7 +273,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
             click_on 'この薬局へ情報を公開する'
           end
           click_on 'この薬局への情報公開を中止する'
-          expect(Like.all.count).to eq 0
+          expect(Like.count).to eq 0
           expect(page).to have_content '自分の情報公開を中止しました'
         end
 

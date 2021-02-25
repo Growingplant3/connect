@@ -9,14 +9,14 @@ RSpec.describe '開発者管理機能', type: :system do
   describe '開発者アカウント作成機能' do
     context 'アカウント登録ボタン' do
       it 'ユーザーのアカウント登録ボタンから開発者アカウントは作成できない' do
-        expect(User.all.count).to eq 0
+        expect(User.count).to eq 0
         visit new_user_registration_path
         fill_in 'user[name]', with: 'お試し登録'
         fill_in 'user[email]', with: 'otameshi@gmail.com'
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
         click_on 'アカウント登録'
-        expect(User.all.count).to eq 1
+        expect(User.count).to eq 1
         expect(User.first.role).not_to eq 'developer'
       end
     end
