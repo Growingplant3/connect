@@ -5,11 +5,11 @@ RSpec.describe Like, type: :model do
   let(:new_pharmacy) { create(:new_pharmacy) }
   let(:like) { create(:like, user_id: new_user.id, pharmacy_id: new_pharmacy.id) }
 
-  before { expect(Like.all.count).to eq 0 }
+  before { expect(Like.count).to eq 0 }
   describe 'モデルの作成' do
     it 'ユーザーと薬局に紐づいた状態でいいねを作成できる' do
       like
-      expect(Like.all.count).to eq 1
+      expect(Like.count).to eq 1
       expect(Like.first.user).to eq new_user
       expect(Like.first.pharmacy).to eq new_pharmacy
     end
@@ -20,7 +20,7 @@ RSpec.describe Like, type: :model do
       before { 
         like
       }
-      after { expect(Like.all.count).to eq 0 }
+      after { expect(Like.count).to eq 0 }
       it '作成されたいいねを削除できる' do
         like.destroy
       end
